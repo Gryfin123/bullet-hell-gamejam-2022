@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 public class InputScriptableObject : ScriptableObject
 {
+
+    private PlayerInput gameInput;
+
     // Start is called before the first frame update
     void Start()
     {
