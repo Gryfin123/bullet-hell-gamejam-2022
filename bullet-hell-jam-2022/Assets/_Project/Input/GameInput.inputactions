@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Slowdown",
+                    "name": "Focus",
                     "type": "Value",
                     "id": "78858553-ca7d-4444-8cd6-01532e344ddb",
                     "expectedControlType": "Digital",
@@ -105,7 +105,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Slowdown",
+                    "action": "Focus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Slowdown",
+                    "action": "Focus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

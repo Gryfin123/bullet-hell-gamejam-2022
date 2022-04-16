@@ -55,7 +55,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Slowdown"",
+                    ""name"": ""Focus"",
                     ""type"": ""Value"",
                     ""id"": ""78858553-ca7d-4444-8cd6-01532e344ddb"",
                     ""expectedControlType"": ""Digital"",
@@ -127,7 +127,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Slowdown"",
+                    ""action"": ""Focus"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -138,7 +138,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Slowdown"",
+                    ""action"": ""Focus"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -262,7 +262,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_Warp = m_Gameplay.FindAction("Warp", throwIfNotFound: true);
-        m_Gameplay_Slowdown = m_Gameplay.FindAction("Slowdown", throwIfNotFound: true);
+        m_Gameplay_Focus = m_Gameplay.FindAction("Focus", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -325,7 +325,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_Warp;
-    private readonly InputAction m_Gameplay_Slowdown;
+    private readonly InputAction m_Gameplay_Focus;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
@@ -333,7 +333,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @Warp => m_Wrapper.m_Gameplay_Warp;
-        public InputAction @Slowdown => m_Wrapper.m_Gameplay_Slowdown;
+        public InputAction @Focus => m_Wrapper.m_Gameplay_Focus;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -352,9 +352,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Warp.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWarp;
                 @Warp.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWarp;
                 @Warp.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWarp;
-                @Slowdown.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlowdown;
-                @Slowdown.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlowdown;
-                @Slowdown.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlowdown;
+                @Focus.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFocus;
+                @Focus.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFocus;
+                @Focus.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFocus;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -368,9 +368,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Warp.started += instance.OnWarp;
                 @Warp.performed += instance.OnWarp;
                 @Warp.canceled += instance.OnWarp;
-                @Slowdown.started += instance.OnSlowdown;
-                @Slowdown.performed += instance.OnSlowdown;
-                @Slowdown.canceled += instance.OnSlowdown;
+                @Focus.started += instance.OnFocus;
+                @Focus.performed += instance.OnFocus;
+                @Focus.canceled += instance.OnFocus;
             }
         }
     }
@@ -380,6 +380,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnWarp(InputAction.CallbackContext context);
-        void OnSlowdown(InputAction.CallbackContext context);
+        void OnFocus(InputAction.CallbackContext context);
     }
 }
