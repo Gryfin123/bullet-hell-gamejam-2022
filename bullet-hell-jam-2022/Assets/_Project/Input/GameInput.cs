@@ -29,7 +29,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""33aab5c4-1173-481a-8034-f99e9b39ef40"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -38,12 +38,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Shoot"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""f5a55474-23fc-4847-af5f-b5a6bbc0da68"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Digital"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Warp"",
@@ -56,12 +56,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Slowdown"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""78858553-ca7d-4444-8cd6-01532e344ddb"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Digital"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
