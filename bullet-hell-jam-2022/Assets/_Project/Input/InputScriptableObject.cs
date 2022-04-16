@@ -21,7 +21,25 @@ public class InputScriptableObject : ScriptableObject, GameInput.IGameplayAction
     
 
     private GameInput _gameInput;
+    [SerializeField] private Vector2 _movementAxis;
+    [SerializeField] private bool _isFocusing;
+    [SerializeField] private bool _isShooting;
 
+    // Public
+    public bool IsFocusing()
+    {
+        return _isFocusing;
+    }
+    public bool IsShootinging()
+    {
+        return _isShooting;
+    }
+    public Vector2 GetMovementAxis()
+    {
+        return _movementAxis;
+    }
+
+    // Private
     private void OnEnable() {
         if (_gameInput == null)
         {
@@ -29,9 +47,11 @@ public class InputScriptableObject : ScriptableObject, GameInput.IGameplayAction
             _gameInput.Gameplay.SetCallbacks(this);
             _gameInput.Menu.SetCallbacks(this);
         }    
+        
         EnableGamplayInput();
     }
     private void OnDisable() {
+        ResetVariables();
         DisableAllInput();
     }
 
@@ -50,31 +70,45 @@ public class InputScriptableObject : ScriptableObject, GameInput.IGameplayAction
         _gameInput.Gameplay.Disable();
         _gameInput.Menu.Disable();
     }
+    private void ResetVariables()
+    {
+        _isFocusing = false;
+        _isShooting = false;
+        _movementAxis = new Vector2(0,0);
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (_warpEvent != null
-            && context.phase == InputActionPhase.Performed)
-            _moveEvent.Invoke(context.ReadValue<Vector2>());
+        if (context.phase == InputActionPhase.Performed)
+            _movementAxis = context.ReadValue<Vector2>();
+        if (context.phase == InputActionPhase.Performed)
+            _movementAxis = context.ReadValue<Vector2>();
+
+        if (_moveEvent != null)
+        {
+            _moveEvent.Invoke(_movementAxis);
+        }
     }
 
     public void OnFocus(InputAction.CallbackContext context)
     {
-        if (_warpEvent != null
-            && context.phase == InputActionPhase.Performed)
-            _focusEvent.Invoke(true);
-        if (_warpEvent != null
-            && context.phase == InputActionPhase.Canceled)
-            _focusEvent.Invoke(false);
+        if (context.phase == InputActionPhase.Performed)
+            _isFocusing = true;
+        if (context.phase == InputActionPhase.Canceled)
+            _isFocusing = false;
+        
+        if (_focusEvent != null)
+        _focusEvent.Invoke(_isFocusing);
     }
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (_warpEvent != null
-            && context.phase == InputActionPhase.Performed)
-            _shootEvent.Invoke(true);
-        if (_warpEvent != null
-            && context.phase == InputActionPhase.Canceled)
-            _shootEvent.Invoke(false);
+        if (context.phase == InputActionPhase.Performed)
+            _isShooting = true;
+        if (context.phase == InputActionPhase.Canceled)
+            _isShooting = false;
+            
+        if (_shootEvent != null)
+        _shootEvent.Invoke(_isShooting);
     }
 
     public void OnWarp(InputAction.CallbackContext context)
@@ -85,19 +119,19 @@ public class InputScriptableObject : ScriptableObject, GameInput.IGameplayAction
     }
     public void OnPause(InputAction.CallbackContext context)
     {
-        if (_warpEvent != null
+        if (_pauseEvent != null
             && context.phase == InputActionPhase.Performed)
             _pauseEvent.Invoke();
     }
     public void OnClick(InputAction.CallbackContext context)
     {
-        if (_warpEvent != null
+        if (_clickEvent != null
             && context.phase == InputActionPhase.Performed)
             _clickEvent.Invoke();
     }
     public void OnLeave(InputAction.CallbackContext context)
     {
-        if (_warpEvent != null
+        if (_leaveEvent != null
             && context.phase == InputActionPhase.Performed)
             _leaveEvent.Invoke();
     }
