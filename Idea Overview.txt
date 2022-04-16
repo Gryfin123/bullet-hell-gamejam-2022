@@ -1,0 +1,14 @@
+Future Break
+
+Labolatory in USA was working on connection to a special dimension of bullets. Something goes wrong, barriers break, rifts open, allowing passage between them and dangares that move between dimensions.
+
+Player now has to get to where the first rift has been created, seal it, and kill everything on the way.
+
+Main features:
+- player moves around, shoots and dodges (focus on dodging)
+- bullet hell shootings and shots and deaths
+
+- when player gets hit, he becomes vulnerable for some time. While vulnerable, if player gets hit, he is done and dies.
+- enemies and his bullets will be on two planes. Player cant interact with plane he is not on. There will be ways to move between planes, like portal.
+
+ 

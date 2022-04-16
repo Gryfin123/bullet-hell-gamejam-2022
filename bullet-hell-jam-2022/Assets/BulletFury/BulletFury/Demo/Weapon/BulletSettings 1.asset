@@ -17,8 +17,8 @@ MonoBehaviour:
   plane: 0
   waitToStart: 0
   timeToPlayWhileWaiting: 0.25
-  lifetime: 4
-  speed: -1
+  lifetime: 6
+  speed: -2.5
   moveWithTransform: 1
   damage: 1
   size: 0.5
