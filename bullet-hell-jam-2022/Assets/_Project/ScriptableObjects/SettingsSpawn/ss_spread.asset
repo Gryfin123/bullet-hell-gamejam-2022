@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ss_spread
   m_EditorClassIdentifier: 
   fireRate: 8
-  burstCount: 1
-  burstDelay: 0.1
+  burstCount: 2
+  burstDelay: 0.5
   spawnDir: 2
   directionArc: 0
   randomise: 0
