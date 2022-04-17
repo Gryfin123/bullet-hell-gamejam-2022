@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - Enemy
+  - EnemyBullets
+  - Player
+  - PlayerBullets
   - 
   - 
   - 
@@ -38,6 +38,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 595668731
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemies
+    uniqueID: 1862196525
+    locked: 0
+  - name: PlayerBullets
+    uniqueID: 2931640697
+    locked: 0
+  - name: Player
+    uniqueID: 2187466283
+    locked: 0
+  - name: EnemyBullets
+    uniqueID: 3345100543
+    locked: 0
+  - name: Overlays
+    uniqueID: 1156692039
     locked: 0

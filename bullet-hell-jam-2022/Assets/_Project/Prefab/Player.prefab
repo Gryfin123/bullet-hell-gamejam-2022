@@ -1,5 +1,103 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2983107962275001192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2426889264144344162}
+  - component: {fileID: 9090693853458944986}
+  - component: {fileID: 6476863411640009324}
+  m_Layer: 10
+  m_Name: BulletManagers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2426889264144344162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983107962275001192}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.260741, y: 1.9772676, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8348095075951470921}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9090693853458944986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983107962275001192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBullets: 1023
+  drawPriority: -10
+  bulletSettings: {fileID: 11400000, guid: 1edc761b951796b4b8b5badc1e5abb09, type: 2}
+  spawnSettings: {fileID: 11400000, guid: 8f60856532e001c42b5fa0a1ec2b47d1, type: 2}
+  currentActiveBullets: 0
+  maxActiveBullets: 0
+  seed: 
+  randomiseSeedOnAwake: 1
+  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  OnBulletDied:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBulletCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBulletSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWeaponFired:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6476863411640009324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983107962275001192}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBullets: 1023
+  drawPriority: -10
+  bulletSettings: {fileID: 11400000, guid: 233a66796e118db4a98d3e39c1e95e4c, type: 2}
+  spawnSettings: {fileID: 11400000, guid: f1f7a70d3c5855b4cb60f9ebece230bf, type: 2}
+  currentActiveBullets: 0
+  maxActiveBullets: 0
+  seed: 
+  randomiseSeedOnAwake: 1
+  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  OnBulletDied:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBulletCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBulletSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWeaponFired:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6471037336594005533
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 852312773926366804}
   - component: {fileID: 819755511632827756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: hitbox_indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +166,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2107501013
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 061e47058887dd74ca0438027bd2af09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,7 +192,8 @@ GameObject:
   - component: {fileID: 8348095075951470920}
   - component: {fileID: 8348095075951470926}
   - component: {fileID: 8348095075951470927}
-  m_Layer: 0
+  - component: {fileID: 9216936789301740952}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,6 +212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 852312773926366804}
+  - {fileID: 2426889264144344162}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,8 +253,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2107501013
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd2eae558b7b7f94c8db05d4c4d3bac5, type: 3}
   m_Color: {r: 0.582375, g: 0.5093005, b: 0.990566, a: 1}
@@ -189,6 +289,9 @@ MonoBehaviour:
   _warpLayer:
     serializedVersion: 2
     m_Bits: 0
+  _weapons:
+  - {fileID: 9090693853458944986}
+  - {fileID: 6476863411640009324}
 --- !u!114 &8348095075951470927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletLayersToBeHitBy:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 384
   shape: 0
   radius: 0.12
   size: {x: 1, y: 1, z: 1}
@@ -214,4 +317,28 @@ MonoBehaviour:
   pointC: {x: 0, y: 0, z: 0}
   OnCollide:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9216936789301740952}
+        m_TargetAssemblyTypeName: PlayerCollisionHandler, Assembly-CSharp
+        m_MethodName: OnEnemyBulletCollision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9216936789301740952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348095075951470923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d68b37622d04b4ba68d7c90eb8e042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

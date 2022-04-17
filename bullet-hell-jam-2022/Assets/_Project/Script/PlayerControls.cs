@@ -16,6 +16,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] LayerMask _realityLayer;
     [SerializeField] LayerMask _warpLayer;
 
+    [Header("Weapons")]
+    [SerializeField] List<BulletFury.BulletManager> _weapons;
+
     
 
     private void OnEnable() {
@@ -29,9 +32,9 @@ public class PlayerControls : MonoBehaviour
 
     private void Update() {
         ProcessMoving();
+            ProcessShooting();
         if (_playerInput.IsShootinging())
         {
-            ProcessShooting();
         }
     }
 
@@ -44,7 +47,10 @@ public class PlayerControls : MonoBehaviour
     }
     private void ProcessShooting()
     {
-        Debug.Log("Shooting!!!");
+        foreach(BulletFury.BulletManager curr in _weapons)
+        {
+            curr.Spawn(transform.position, Vector3.up);
+        }
     }
     private void WarpIn()
     {

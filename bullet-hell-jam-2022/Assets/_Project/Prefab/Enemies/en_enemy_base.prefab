@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5751757448976847070}
   - component: {fileID: 8674359528887885817}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 7613442921273025714}
   - component: {fileID: 1263612275822343653}
   - component: {fileID: 3166911941860650262}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: en_enemy_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,8 +138,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1862196525
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ecd3bc8ffa77bf9438481d6f0c0de190, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee5bb25aca0d474f99a06df4b7ce0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canFire: 1
   _bulletManager: []
 --- !u!114 &2239584294078985215
 MonoBehaviour:
@@ -177,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4daf9a3a4f1d89442b8a30ded16553d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canSpin: 1
   _target: {fileID: 0}
   _speed: 0
 --- !u!114 &7613442921273025714
@@ -191,9 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d1e5cb230eb5b4a9f2ddb98bae1966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canMove: 0
   _target: {fileID: 0}
   _speed: 0
-  _canMove: 0
 --- !u!114 &1263612275822343653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canMove: 0
+  _rotation: 0
   _angle: 0
   _speed: 0
 --- !u!114 &3166911941860650262
