@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveAtPlayer : MonoBehaviour
+public class MoveAtTarget : MonoBehaviour
 {
+    public bool _canMove = true;
     [SerializeField] Transform _target;
     [SerializeField] float _speed;
-    [SerializeField] bool _canMove;
 
     // Update is called once per frame
     void Update()

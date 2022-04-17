@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 11400000, guid: 945ec0365077176418488737deed54be, type: 2}
   _playerSpeedStandard: 6
-  _playerSpeedFocus: 1.5
+  _playerSpeedFocus: 2
   _inWarp: 0
   _realityLayer:
     serializedVersion: 2

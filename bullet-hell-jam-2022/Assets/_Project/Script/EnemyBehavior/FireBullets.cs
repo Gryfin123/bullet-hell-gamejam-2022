@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public class FireBullets : MonoBehaviour
 {
+    public bool _canFire = true;
     [SerializeField] private List<BulletFury.BulletManager> _bulletManager; 
 
     // Start is called before the first frame update
@@ -15,9 +16,12 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(BulletFury.BulletManager curr in _bulletManager)
+        if (_canFire)
         {
-            curr.Spawn(transform.position, curr.transform.up);
+            foreach(BulletFury.BulletManager curr in _bulletManager)
+            {
+                curr.Spawn(transform.position, curr.transform.up);
+            }
         }
     }
 
