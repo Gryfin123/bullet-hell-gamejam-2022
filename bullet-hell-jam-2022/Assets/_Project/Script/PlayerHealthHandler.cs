@@ -7,7 +7,7 @@ using BulletFury.Data;
 [RequireComponent(typeof(Health))]
 public class PlayerHealthHandler : MonoBehaviour
 {
-    private Health _healthComponent;
+    [SerializeField] private Health _healthComponent;
     
     private Coroutine _regainHpCoroutine = null;
 
@@ -17,7 +17,7 @@ public class PlayerHealthHandler : MonoBehaviour
         // Try to fetch health component if not already assigned
         if (_healthComponent == null)
         {
-          _healthComponent = GetComponent<Health>();
+          _healthComponent = gameObject.GetComponent<Health>();
         }
     }
 
