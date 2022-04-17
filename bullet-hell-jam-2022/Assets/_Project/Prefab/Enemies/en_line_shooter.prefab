@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5488425847038621159}
   - component: {fileID: 8906170482891750080}
-  - component: {fileID: 6866194203259509732}
   m_Layer: 0
   m_Name: BulletManager
   m_TagString: Untagged
@@ -44,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBullets: 1023
+  maxBullets: 36
   drawPriority: 0
   bulletSettings: {fileID: 11400000, guid: fc177d7c9307d034d93c828b6137ccc6, type: 2}
   spawnSettings: {fileID: 11400000, guid: 27e42d5712688114c9a4793298c23ea8, type: 2}
@@ -65,18 +64,6 @@ MonoBehaviour:
   OnWeaponFired:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6866194203259509732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819416048633790708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf9e878b05e8aa4ca260a2e4113633b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6105410904395418562
 GameObject:
   m_ObjectHideFlags: 0
