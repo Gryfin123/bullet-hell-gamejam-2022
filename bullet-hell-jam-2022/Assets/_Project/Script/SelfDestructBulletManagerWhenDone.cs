@@ -16,7 +16,7 @@ public class SelfDestructBulletManagerWhenDone : MonoBehaviour
     {
         if (transform.parent == null && !_bm.CheckBulletsRemaining())
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
