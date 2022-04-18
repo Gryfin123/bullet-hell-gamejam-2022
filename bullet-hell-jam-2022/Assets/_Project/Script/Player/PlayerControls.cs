@@ -32,9 +32,9 @@ public class PlayerControls : MonoBehaviour
 
     private void Update() {
         ProcessMoving();
-            ProcessShooting();
         if (_playerInput.IsShootinging())
         {
+            ProcessShooting();
         }
     }
 

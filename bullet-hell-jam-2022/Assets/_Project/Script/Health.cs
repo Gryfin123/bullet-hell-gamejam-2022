@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] float currHealth;
     [SerializeField] float maxHealth = 100f;
+    [SerializeField] bool _isInvincible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,32 +28,44 @@ public class Health : MonoBehaviour
     public float GetMaxHealth(){
         return maxHealth;
     }
+    public bool IsInvincible{
+        get { return _isInvincible; }
+        set { _isInvincible = value;}
+    }
     
-    public void DealDamage(BulletContainer container, BulletCollider collision){
-
-        float amount = container.Damage;
-
-        // Abandon method if hp is already 0
-        if (currHealth <= 0) return;
-
-        // Process taking damage
-        if (currHealth - amount <= 0)
+    public void DealDamage(BulletContainer container, BulletCollider collision)
+    {
+        if (!_isInvincible)
         {
-            currHealth = 0;
-            HpDroppedToZero(0, amount);
-        } 
-        else
-        {
-            currHealth -= amount;
-            HpChanged(currHealth, amount);
-            if (amount < 0)
+            float amount = container.Damage;
+            // Abandon method if hp is already 0
+            if (currHealth <= 0) return;
+
+            // Process taking damage
+            if (currHealth - amount <= 0)
             {
-              HpIncreased(currHealth, amount);
-            }
-            else if (amount > 0)
+                currHealth = 0;
+                HpDroppedToZero.Invoke(0, amount);
+            } 
+            else
             {
-              HpDecreased(currHealth, amount);
+                currHealth -= amount;
+                HpChanged.Invoke(currHealth, amount);
+                if (amount < 0)
+                {
+                HpIncreased.Invoke(currHealth, amount);
+                }
+                else if (amount > 0)
+                {
+                HpDecreased.Invoke(currHealth, amount);
+                }
             }
         }
+    }
+
+    public void Heal(float amount)
+    {
+        currHealth += amount;
+        HpChanged.Invoke(currHealth, amount);
     }
 }
