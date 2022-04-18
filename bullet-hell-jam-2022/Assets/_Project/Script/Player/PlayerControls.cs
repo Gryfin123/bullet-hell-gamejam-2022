@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     [Header("Controls")]
+    [SerializeField] SpawnerSetup _levelBoundries;
     [SerializeField] InputScriptableObject _playerInput;
 
     [Header("Stats")]
@@ -40,10 +41,25 @@ public class PlayerControls : MonoBehaviour
 
     private void ProcessMoving()
     {
-        Vector3 v3 = _playerInput.GetMovementAxis(); // Convert vecotr 2 to vector 3;
-        transform.position += v3 
+        Vector3 input = (Vector3)_playerInput.GetMovementAxis();
+        Vector3 posIncrementX = ( new Vector3(input.x, 0, 0)
                               * (_playerInput.IsFocusing() ? _playerSpeedFocus : _playerSpeedStandard)
-                              * Time.deltaTime;
+                              * Time.deltaTime);
+        Vector3 posIncrementY = ( new Vector3(0, input.y, 0)
+                              * (_playerInput.IsFocusing() ? _playerSpeedFocus : _playerSpeedStandard)
+                              * Time.deltaTime);
+
+        // Move only if player remains in camera view 
+        if ((transform.position + posIncrementY).y < _levelBoundries.camTop &&
+            (transform.position + posIncrementY).y > _levelBoundries.camBottom)
+        {
+            transform.position += posIncrementY;
+        }
+        if ((transform.position + posIncrementX).x > _levelBoundries.camLeft &&
+            (transform.position + posIncrementX).x < _levelBoundries.camRight)
+        {
+            transform.position += posIncrementX;
+        }
     }
     private void ProcessShooting()
     {

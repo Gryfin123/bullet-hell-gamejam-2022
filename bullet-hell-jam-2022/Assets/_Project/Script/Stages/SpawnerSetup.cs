@@ -9,6 +9,12 @@ public class SpawnerSetup : MonoBehaviour
     /// how far outside of camera bounds is something supposed to spawn
     [SerializeField] float _spawnPadding; 
     List<ExpendedPosition> _positions;
+
+    
+    public float camTop;
+    public float camLeft;
+    public float camRight;
+    public float camBottom;
     
 
     // Start is called before the first frame update
@@ -20,10 +26,10 @@ public class SpawnerSetup : MonoBehaviour
         Vector3 camTopRight = _cam.ViewportToWorldPoint(new Vector3(1, 1, _cam.nearClipPlane));
         Vector3 camBottomLeft = _cam.ViewportToWorldPoint(new Vector3(0, 0, _cam.nearClipPlane));
         
-        float camTop = camTopRight.y;
-        float camLeft = camBottomLeft.x;
-        float camRight = camTopRight.x;
-        float camBottom = camBottomLeft.y;
+        camTop = camTopRight.y;
+        camLeft = camBottomLeft.x;
+        camRight = camTopRight.x;
+        camBottom = camBottomLeft.y;
         
         // Create all Top positions
         for(int denominator = 2; denominator <= _maxDivision; denominator++)
