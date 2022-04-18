@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -46,6 +47,9 @@ namespace BulletFury.Data
         
         [SerializeField, Tooltip("move all of the bullets with the current object")] 
         private bool moveWithTransform = false;
+
+        [SerializeField, Tooltip("rotate all of the bullets with the current object")]
+        private bool rotateWithTransform = false;
         
         [FormerlySerializedAs("extraData")] [SerializeField] private float damage = 1;
 
@@ -137,7 +141,7 @@ namespace BulletFury.Data
         #endregion
 
         private Dictionary<int, Transform> _trackedObjects = new Dictionary<int, Transform>();
-        
+
         public void SetTrackedObject(ref BulletContainer b, Transform obj)
         {
             if (!_trackedObjects.ContainsKey(b.Id))
@@ -189,7 +193,7 @@ namespace BulletFury.Data
         /// </summary>
         /// <param name="bullet">the current bullet</param>
         /// <param name="deltaTime">cached Time.deltaTime</param>
-        public void SetValues(ref BulletContainer bullet, float deltaTime, Vector3 position, Vector3 previousPosition, bool managerIsActive)
+        public void SetValues(ref BulletContainer bullet, float deltaTime, Transform transform, Vector3 previousPosition, Vector3 prevRotation, bool managerIsActive)
         {
             // if the bullet is dead or waiting, don't do anything
             if (bullet.Dead == 1 || (bullet.Waiting == 1 && bullet.CurrentLifeSeconds > bullet.TimeToWait))
@@ -258,8 +262,15 @@ namespace BulletFury.Data
                 bullet.Velocity = bullet.Direction * (Plane == BulletPlane.XY ? Vector3.up : Vector3.forward);
 
             if (moveWithTransform)
-                bullet.Position += (float3)(position - previousPosition);
+                bullet.Position += (float3)(transform.position - previousPosition);
 
+            if (rotateWithTransform)
+            {
+                var rotationDelta = Quaternion.Euler(transform.eulerAngles - prevRotation);
+                bullet.Position = (rotationDelta) * (bullet.Position - (float3) transform.position) + transform.position;
+                bullet.Rotation = rotationDelta * bullet.Rotation;
+            }
+            
             // change the velocity over time
             if (useVelocityOverTime)
             {

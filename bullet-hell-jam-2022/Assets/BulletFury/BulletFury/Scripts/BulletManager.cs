@@ -86,7 +86,7 @@ namespace BulletFury
         private JobHandle _handle;
         private static readonly int Color = Shader.PropertyToID("_Color");
         private float _currentTime = 0;
-        private Vector3 _previousPos;
+        private Vector3 _previousPos, _previousRot;
         private bool _enabled = false;
         private static List<BulletManager> _managers;
         
@@ -108,6 +108,7 @@ namespace BulletFury
             _colors = new Vector4[maxBullets];
             _materialPropertyBlock = new MaterialPropertyBlock();
             _previousPos = transform.position;
+            _previousRot = transform.eulerAngles;
             if (randomiseSeedOnAwake)
                 seed = Guid.NewGuid().ToString();
 
@@ -292,7 +293,7 @@ namespace BulletFury
             var deltaTime = Time.deltaTime;
             // update the bullets according to the settings
             for (int i = _bullets.Length - 1; i >= 0; --i)
-                bulletSettings.SetValues(ref _bullets[i], deltaTime, transform.position, _previousPos, gameObject.activeInHierarchy);
+                bulletSettings.SetValues(ref _bullets[i], deltaTime, transform, _previousPos, _previousRot, gameObject.activeInHierarchy);
 
             // create a new job
             _bulletJob = new BulletJob
@@ -308,6 +309,7 @@ namespace BulletFury
             // increment the current timer
             _currentTime += deltaTime;
             _previousPos = transform.position;
+            _previousRot = transform.eulerAngles;
         }
 
         private void LateUpdate()
@@ -620,7 +622,7 @@ namespace BulletFury
                 // update the bullets according to the settings
                 for (int i = _editorBullets.Length - 1; i >= 0; --i)
                 {
-                    bulletSettings.SetValues(ref _editorBullets[i], deltaTime, transform.position, _previousPos, gameObject.activeInHierarchy);
+                    bulletSettings.SetValues(ref _editorBullets[i], deltaTime, transform, _previousPos, _previousRot, gameObject.activeInHierarchy);
                     
                     _editorBullets[i].CurrentLifeSeconds += deltaTime;
                     if (_editorBullets[i].CurrentLifeSeconds > _editorBullets[i].Lifetime)
@@ -651,6 +653,7 @@ namespace BulletFury
                 }
                 
                 _previousPos = transform.position;
+                _previousRot = transform.eulerAngles;
                 _sceneView.Repaint();
                 yield return new WaitForSeconds(deltaTime);
                 _sceneView.Repaint();

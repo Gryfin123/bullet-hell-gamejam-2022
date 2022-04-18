@@ -23,8 +23,6 @@ public class SetupWindow : EditorWindow
     [InitializeOnLoadMethod]
     public static void Init()
     {
-        if (File.Exists(Path)) return;
-        File.WriteAllText(Path, "initialised");
         _hasPipeline = false;
         _hasRenderFeature = false;
         var rp = GraphicsSettings.renderPipelineAsset;
@@ -56,7 +54,13 @@ public class SetupWindow : EditorWindow
             }
         }
 #endif
-        ShowWindow();
+        
+        if (File.Exists(Path) && _hasRenderFeature) return;
+        
+        File.WriteAllText(Path, "initialised");
+        if (!File.Exists(Path) || (!_hasRenderFeature &&  EditorUtility.DisplayDialog("No render feature found",
+            "Render feature missing - bullets won't render without this! Do you want to open the settings window to find the asset?", "Yes please", "I know what I'm doing")))
+            ShowWindow();
     }
 
     [MenuItem("Window/BulletFury/Setup")]
@@ -114,37 +118,13 @@ public class SetupWindow : EditorWindow
 
         GUILayout.Label("Render Feature", bold);
         style.normal.textColor = _hasRenderFeature ? Color.green : Color.red;
-        GUILayout.Label(
-            _hasRenderFeature
-                ? "The render feature has been added, you're good to go :)"
-                : "The render feature hasn't been added :(", style);
         EditorGUILayout.Space();
         style.normal.textColor = oldColor;
         if (!_hasRenderFeature)
         {
-            GUILayout.Label(
-                "The render feature hasn't been added to the renderer - you won't see any bullets without it.",
-                EditorStyles.label);
-            if (GUILayout.Button("Add the BulletFury render feature for me please"))
-            {
-                var feature = CreateInstance<BulletFuryRenderFeature>();
-                feature.name = "BulletFuryRenderFeature";
-                var path = AssetDatabase.GetAssetPath(_scriptableRenderData);
-                path = path.Replace(path.Split('/').Last(), "BulletFuryRenderFeature.asset");
-                AssetDatabase.CreateAsset(feature, path);
-                
-                AssetDatabase.Refresh();
-                if (AssetDatabase.TryGetGUIDAndLocalFileIdentifier(feature, out var guid, out long localId))
-                {
-                    _scriptableRenderData.rendererFeatures.Add(AssetDatabase.LoadAssetAtPath<BulletFuryRenderFeature>(AssetDatabase.GUIDToAssetPath(guid)));
-                    _scriptableRenderData.SetDirty();
-                }
-                else
-                {
-                    Debug.LogError("Couldn't find asset");
-                }
-                AssetDatabase.SaveAssets();
-            }
-        }
+            EditorGUILayout.ObjectField( GUIContent.none, _scriptableRenderData, typeof(ScriptableRendererData), false);
+            EditorGUILayout.HelpBox( $"{_scriptableRenderData.name} is missing a BulletFuryRenderFeature.\nBullets will not render without this, please add the render feature - click the asset, it should open in the inspector. Then press \"Add Render Feature\", and select BulletFuryRenderFeature", MessageType.Error );
+        } else 
+            GUILayout.Label("The render feature has been added, you're good to go :)", style);
     }
 }
