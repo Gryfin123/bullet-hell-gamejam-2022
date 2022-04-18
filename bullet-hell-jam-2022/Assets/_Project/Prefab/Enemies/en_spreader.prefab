@@ -103,7 +103,8 @@ PrefabInstance:
       propertyPath: bulletSettings
       value: 
       objectReference: {fileID: 11400000, guid: 3062ee52fbee0014792f48273e3fbd4c, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1120368488368668317, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
 --- !u!1 &8810170108721219798 stripped
 GameObject:
@@ -141,7 +142,7 @@ MonoBehaviour:
   maxActiveBullets: 0
   seed: 
   randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
       m_Calls: []
@@ -174,7 +175,7 @@ MonoBehaviour:
   maxActiveBullets: 0
   seed: 
   randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
       m_Calls: []

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 8
   burstCount: 4
-  burstDelay: 0.25
-  spawnDir: 2
+  burstDelay: 0.2
+  spawnDir: 0
   directionArc: 0
   randomise: 0
   onEdge: 0
-  numSides: 2
-  numPerSide: 6
+  numSides: 6
+  numPerSide: 1
   radius: 0.5
-  arc: 120
+  arc: 60
   isExpanded: 1

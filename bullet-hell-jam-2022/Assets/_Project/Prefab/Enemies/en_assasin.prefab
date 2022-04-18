@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: _rotationSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3166911941860650262, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: _bulletManagers
+      value: 
+      objectReference: {fileID: 3243583069795476183}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -105,6 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: a7272ef7eabda454cb71df1b3c1372f0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+--- !u!1 &3243583069795476183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6287676028357635835, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+  m_PrefabInstance: {fileID: 8809557182684040236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &153212123210355669 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}

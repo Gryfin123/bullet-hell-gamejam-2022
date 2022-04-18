@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a23ae2178c4258a35e0704bcdfe093, type: 3}
   m_Name: ss_line
   m_EditorClassIdentifier: 
-  fireRate: 2
-  burstCount: 8
+  fireRate: 1
+  burstCount: 2
   burstDelay: 0.1
   spawnDir: 2
   directionArc: 1
@@ -23,4 +23,4 @@ MonoBehaviour:
   numPerSide: 1
   radius: 0.5
   arc: 360
-  isExpanded: 0
+  isExpanded: 1

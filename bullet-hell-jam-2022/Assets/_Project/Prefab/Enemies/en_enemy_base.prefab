@@ -51,7 +51,7 @@ MonoBehaviour:
   maxActiveBullets: 0
   seed: 84390911-68ee-4cab-8c46-0995fa62785b
   randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
       m_Calls: []
@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 3632727904062555253}
   - component: {fileID: 5548822461602175090}
   - component: {fileID: 4029668890658997626}
+  - component: {fileID: 1120368488368668317}
   - component: {fileID: 6287676028357635836}
   - component: {fileID: 2239584294078985215}
   - component: {fileID: 7613442921273025714}
@@ -222,6 +223,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletManagers: {fileID: 1929594080715711949}
   _healthComponent: {fileID: 5548822461602175090}
+--- !u!114 &1120368488368668317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287676028357635835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ea7dc818b14974482de598e78a5ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6287676028357635836
 MonoBehaviour:
   m_ObjectHideFlags: 0
