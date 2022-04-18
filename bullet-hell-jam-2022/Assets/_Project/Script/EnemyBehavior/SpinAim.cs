@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpinAim : MonoBehaviour
 {
     public bool _canSpin = true;
-    [SerializeField] private float _rotationSpeed;
-    [SerializeField] private GameObject _bulletManagers;
+    [SerializeField] public float _rotationSpeed;
+    [SerializeField] public GameObject _bulletManagers;
 
     // Update is called once per frame
     void Update()

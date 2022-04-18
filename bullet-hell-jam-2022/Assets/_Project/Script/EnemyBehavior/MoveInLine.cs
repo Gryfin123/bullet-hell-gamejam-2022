@@ -5,10 +5,10 @@ using UnityEngine;
 public class MoveInLine : MonoBehaviour
 {
     public bool _canMove = true;
-    [SerializeField] private float _rotation;
+    [SerializeField] public float _rotation;
     private float _currRotation = 0;
-    [SerializeField] private float _angle;
-    [SerializeField] private float _speed;
+    [SerializeField] public float _angle;
+    [SerializeField] public float _speed;
 
     // Update is called once per frame
     void Update()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9090693853458944986}
   - component: {fileID: 6476863411640009324}
   m_Layer: 10
-  m_Name: BulletManagers
+  m_Name: PlayerBulletManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,19 @@ MonoBehaviour:
   previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
   OnBulletDied:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6496154723158680977, guid: 4aa0603cdc8aeab45b40b8f5d8642a7b, type: 3}
+        m_TargetAssemblyTypeName: BulletFury.Demo.BulletExplodeOnHit, Assembly-CSharp
+        m_MethodName: OnBulletDie
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBulletCancelled:
     m_PersistentCalls:
       m_Calls: []

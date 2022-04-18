@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveAtTarget : MonoBehaviour
 {
     public bool _canMove = true;
-    [SerializeField] Transform _target;
-    [SerializeField] float _speed;
+    [SerializeField] public Transform _target;
+    [SerializeField] public float _speed;
 
     // Update is called once per frame
     void Update()
