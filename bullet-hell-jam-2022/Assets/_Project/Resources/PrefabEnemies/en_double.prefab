@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6954482096535923995
+--- !u!1001 &3416396337301811414
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,16 +8,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8240f937910c55049be76ea906612611, type: 3}
+    - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.754717
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.23004214
+      objectReference: {fileID: 0}
+    - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: m_Color.r
+      value: 0.20291919
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635835, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Name
-      value: en_spreader
+      value: en_double
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Enabled
@@ -25,20 +33,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: _bulletManager.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: _bulletManager.Array.data[0]
       value: 
-      objectReference: {fileID: 1793220549312606946}
-    - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-      propertyPath: _bulletManager.Array.data[1]
-      value: 
-      objectReference: {fileID: 3299116365157062219}
-    - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-      propertyPath: _bulletManager.Array.data[2]
-      value: 
-      objectReference: {fileID: 7860587774887145918}
+      objectReference: {fileID: 6271542127871848239}
     - target: {fileID: 6287676028357635837, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -88,98 +88,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-      propertyPath: maxBullets
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: spawnSettings
       value: 
-      objectReference: {fileID: 11400000, guid: 553172c428545ed49b80ead5590fe80f, type: 2}
+      objectReference: {fileID: 11400000, guid: 2c65a8ac7bd974d45a90f688bb87999e, type: 2}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: bulletSettings
       value: 
-      objectReference: {fileID: 11400000, guid: 3062ee52fbee0014792f48273e3fbd4c, type: 2}
-    m_RemovedComponents: []
+      objectReference: {fileID: 11400000, guid: 0bb0fe1506f74dc4baba5f90eebdcd43, type: 2}
+    m_RemovedComponents:
+    - {fileID: 1120368488368668317, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
---- !u!1 &8810170108721219798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1929594080715711949, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-  m_PrefabInstance: {fileID: 6954482096535923995}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1793220549312606946 stripped
+--- !u!114 &6271542127871848239 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-  m_PrefabInstance: {fileID: 6954482096535923995}
+  m_PrefabInstance: {fileID: 3416396337301811414}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810170108721219798}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3299116365157062219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810170108721219798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxBullets: 72
-  drawPriority: 0
-  bulletSettings: {fileID: 11400000, guid: a04a6043b3eff3c47a5bdfdf937aff89, type: 2}
-  spawnSettings: {fileID: 11400000, guid: 553172c428545ed49b80ead5590fe80f, type: 2}
-  currentActiveBullets: 0
-  maxActiveBullets: 0
-  seed: 
-  randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
-  OnBulletDied:
-    m_PersistentCalls:
-      m_Calls: []
-  OnBulletCancelled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnBulletSpawned:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWeaponFired:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &7860587774887145918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810170108721219798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxBullets: 72
-  drawPriority: 0
-  bulletSettings: {fileID: 11400000, guid: 8b6ce2d31f506244eb2ae4d6ee1ced80, type: 2}
-  spawnSettings: {fileID: 11400000, guid: 553172c428545ed49b80ead5590fe80f, type: 2}
-  currentActiveBullets: 0
-  maxActiveBullets: 0
-  seed: 
-  randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
-  OnBulletDied:
-    m_PersistentCalls:
-      m_Calls: []
-  OnBulletCancelled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnBulletSpawned:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWeaponFired:
-    m_PersistentCalls:
-      m_Calls: []

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9090693853458944986}
   - component: {fileID: 6476863411640009324}
   m_Layer: 10
-  m_Name: BulletManagers
+  m_Name: PlayerBulletManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,10 +52,22 @@ MonoBehaviour:
   maxActiveBullets: 0
   seed: 
   randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6496154723158680977, guid: 4aa0603cdc8aeab45b40b8f5d8642a7b, type: 3}
+        m_TargetAssemblyTypeName: BulletFury.Demo.BulletExplodeOnHit, Assembly-CSharp
+        m_MethodName: OnBulletDie
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBulletCancelled:
     m_PersistentCalls:
       m_Calls: []
@@ -85,7 +97,7 @@ MonoBehaviour:
   maxActiveBullets: 0
   seed: 
   randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
       m_Calls: []
@@ -205,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6471037336594005533}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.305, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8348095075951470921}
@@ -363,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cca48cdabd64fc4f8d22e8d3f26917c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelBoundries: {fileID: 0}
   _playerInput: {fileID: 11400000, guid: 945ec0365077176418488737deed54be, type: 2}
   _playerSpeedStandard: 6
   _playerSpeedFocus: 2
@@ -395,7 +408,7 @@ MonoBehaviour:
   radius: 0.08
   size: {x: 1, y: 1, z: 1}
   destroyBullet: 1
-  center: {x: 0, y: -0.3, z: 0}
+  center: {x: 0, y: 0, z: 0}
   pointA: {x: 0, y: 0, z: 0}
   pointB: {x: 0, y: 0, z: 0}
   pointC: {x: 0, y: 0, z: 0}

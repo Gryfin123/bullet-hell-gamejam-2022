@@ -92,6 +92,8 @@ namespace BulletFury.Editor
             BulletFuryEditorUtils.AddRelativeProperty(ref serializedObject, "speed", height, ref currentPos, ref numFields);
             
             BulletFuryEditorUtils.AddRelativeProperty(ref serializedObject, "moveWithTransform", height, ref currentPos, ref numFields);
+            
+            BulletFuryEditorUtils.AddRelativeProperty(ref serializedObject, "rotateWithTransform", height, ref currentPos, ref numFields);
 
             EditorGUI.indentLevel--;
             BulletFuryEditorUtils.AddLabel("Time-based Properties", height, ref currentPos, ref numFields);

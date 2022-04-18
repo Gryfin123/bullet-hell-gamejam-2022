@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveAtTarget : MonoBehaviour
+public class MoveAtTargetPosition : MonoBehaviour
 {
     public bool _canMove = true;
-    [SerializeField] public Transform _target;
+    [SerializeField] public Vector3 _targetPosition;
     [SerializeField] public float _speed;
 
     // Update is called once per frame
@@ -13,7 +13,7 @@ public class MoveAtTarget : MonoBehaviour
     {
         if (_canMove)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
         }
     }
 }

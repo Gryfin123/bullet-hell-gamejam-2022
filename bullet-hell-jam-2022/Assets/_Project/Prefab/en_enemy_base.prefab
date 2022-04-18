@@ -51,25 +51,13 @@ MonoBehaviour:
   maxActiveBullets: 0
   seed: 84390911-68ee-4cab-8c46-0995fa62785b
   randomiseSeedOnAwake: 1
-  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
       m_Calls: []
   OnBulletCancelled:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6496154723158680977, guid: 4aa0603cdc8aeab45b40b8f5d8642a7b, type: 3}
-        m_TargetAssemblyTypeName: BulletFury.Demo.BulletExplodeOnHit, Assembly-CSharp
-        m_MethodName: OnBulletDie
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnBulletSpawned:
     m_PersistentCalls:
       m_Calls: []
@@ -92,6 +80,7 @@ GameObject:
   - component: {fileID: 6287676028357635836}
   - component: {fileID: 2239584294078985215}
   - component: {fileID: 7613442921273025714}
+  - component: {fileID: 3334632730522146279}
   - component: {fileID: 1263612275822343653}
   - component: {fileID: 3166911941860650262}
   m_Layer: 7
@@ -156,12 +145,12 @@ SpriteRenderer:
   m_SortingLayerID: 1862196525
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ecd3bc8ffa77bf9438481d6f0c0de190, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73f9d9c1431c7e744b92e2e6040c4482, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -247,7 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canFire: 1
-  _bulletManager: []
+  _bulletManager:
+  - {fileID: 8674359528887885817}
 --- !u!114 &2239584294078985215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canSpin: 1
   _target: {fileID: 0}
-  _speed: 0
+  _speed: 1000
 --- !u!114 &7613442921273025714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,8 +265,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d1e5cb230eb5b4a9f2ddb98bae1966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canMove: 0
+  _canMove: 1
   _target: {fileID: 0}
+  _speed: 0
+--- !u!114 &3334632730522146279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287676028357635835}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e36292664ab9944a2ea44a40aa32d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canMove: 1
+  _targetPosition: {x: 0, y: 0, z: 0}
   _speed: 0
 --- !u!114 &1263612275822343653
 MonoBehaviour:
@@ -290,10 +295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0032eac0652b7ff4a8f2d0b6fd5dd48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canMove: 0
+  _canMove: 1
   _rotation: 0
   _angle: 0
-  _speed: 0
+  _speed: 2
 --- !u!114 &3166911941860650262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,5 +312,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canSpin: 1
-  _rotationSpeed: 0
+  _rotationSpeed: 30
   _bulletManagers: {fileID: 1929594080715711949}
