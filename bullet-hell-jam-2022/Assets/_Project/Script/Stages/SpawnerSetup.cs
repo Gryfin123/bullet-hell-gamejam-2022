@@ -38,14 +38,44 @@ public class SpawnerSetup : MonoBehaviour
             }
         }
 
-
         // Create all Left Positions
+        for(int denominator = 2; denominator <= _maxDivision; denominator++)
+        {
+            for(int numerator = 1; numerator < _maxDivision; numerator++)
+            {
+                float newX = camLeft - _spawnPadding;
+                float newY = camBottom + (camTop - camBottom) * numerator / denominator;
+                string name = GenerateName("left", numerator, denominator);
 
+                _positions.Add(new ExpendedPosition(name, newX, newY, 0));
+            }
+        }
 
         // Create all Right Positions
+        for(int denominator = 2; denominator <= _maxDivision; denominator++)
+        {
+            for(int numerator = 1; numerator < _maxDivision; numerator++)
+            {
+                float newX = camRight + _spawnPadding;
+                float newY = camBottom + (camTop - camBottom) * numerator / denominator;
+                string name = GenerateName("right", numerator, denominator);
 
+                _positions.Add(new ExpendedPosition(name, newX, newY, 0));
+            }
+        }
 
         // Create all Bottom Positions
+        for(int denominator = 2; denominator <= _maxDivision; denominator++)
+        {
+            for(int numerator = 1; numerator < _maxDivision; numerator++)
+            {
+                float newX = camLeft + (camRight - camLeft) * numerator / denominator;
+                float newY = camBottom - _spawnPadding;
+                string name = GenerateName("bottom", numerator, denominator);
+
+                _positions.Add(new ExpendedPosition(name, newX, newY, 0));
+            }
+        }
 
 
     }
