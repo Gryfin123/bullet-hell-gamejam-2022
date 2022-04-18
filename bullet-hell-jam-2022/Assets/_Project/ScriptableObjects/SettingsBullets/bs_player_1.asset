@@ -18,7 +18,7 @@ MonoBehaviour:
   waitToStart: 0
   timeToPlayWhileWaiting: 0
   lifetime: 2
-  speed: 8
+  speed: 12
   moveWithTransform: 0
   damage: 1
   size: 0.5
@@ -147,7 +147,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.28302002
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -155,8 +155,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.4709419
-      value: 1
+      time: 0.4749397
+      value: 0.49528122
       inSlope: 0
       outSlope: 0
       tangentMode: 0
