@@ -28,6 +28,10 @@ PrefabInstance:
       value: en_double
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: _bulletManager.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -80,6 +84,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: spawnSettings
       value: 
       objectReference: {fileID: 11400000, guid: 2c65a8ac7bd974d45a90f688bb87999e, type: 2}
@@ -96,7 +104,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 3416396337301811414}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 

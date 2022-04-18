@@ -34,7 +34,7 @@ public class SpawnerSetup : MonoBehaviour
         // Create all Top positions
         for(int denominator = 2; denominator <= _maxDivision; denominator++)
         {
-            for(int numerator = 1; numerator < _maxDivision; numerator++)
+            for(int numerator = 0; numerator < _maxDivision; numerator++)
             {
                 float newX = camLeft + (camRight - camLeft) * numerator / denominator;
                 float newY = camTop + _spawnPadding;
@@ -47,7 +47,7 @@ public class SpawnerSetup : MonoBehaviour
         // Create all Left Positions
         for(int denominator = 2; denominator <= _maxDivision; denominator++)
         {
-            for(int numerator = 1; numerator < _maxDivision; numerator++)
+            for(int numerator = 0; numerator < _maxDivision; numerator++)
             {
                 float newX = camLeft - _spawnPadding;
                 float newY = camBottom + (camTop - camBottom) * numerator / denominator;
@@ -60,7 +60,7 @@ public class SpawnerSetup : MonoBehaviour
         // Create all Right Positions
         for(int denominator = 2; denominator <= _maxDivision; denominator++)
         {
-            for(int numerator = 1; numerator < _maxDivision; numerator++)
+            for(int numerator = 0; numerator < _maxDivision; numerator++)
             {
                 float newX = camRight + _spawnPadding;
                 float newY = camBottom + (camTop - camBottom) * numerator / denominator;
@@ -73,7 +73,7 @@ public class SpawnerSetup : MonoBehaviour
         // Create all Bottom Positions
         for(int denominator = 2; denominator <= _maxDivision; denominator++)
         {
-            for(int numerator = 1; numerator < _maxDivision; numerator++)
+            for(int numerator = 0; numerator <= _maxDivision; numerator++)
             {
                 float newX = camLeft + (camRight - camLeft) * numerator / denominator;
                 float newY = camBottom - _spawnPadding;
@@ -91,7 +91,7 @@ public class SpawnerSetup : MonoBehaviour
         return pos + "_" + x.ToString() + "/" + outof.ToString();
     }
 
-    /// Name is [top,bottom,left,right]_[1-max]/[2-max]
+    /// Name is [top,bottom,left,right]_[0-max]/[2-max]
     public Vector3 GetPosition(string name)
     {
         foreach(ExpendedPosition curr in _positions)

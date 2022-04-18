@@ -6,6 +6,7 @@ public class stage_script_1 : MonoBehaviour
 {
 
     [SerializeField] private SpawnerSetup _spawnerSetup;
+    [SerializeField] private Transform _playerTransform;
     [SerializeField] private GameObject _prefabLineShooter;
     [SerializeField] private GameObject _prefabSpreader;
     [SerializeField] private GameObject _prefabAssasin;
@@ -19,20 +20,76 @@ public class stage_script_1 : MonoBehaviour
     {
         if (_previousTimer < 5f && _currTimer >= 5f)
         {
-            Vector3 startPosition = new Vector3(-8, 8, 0);
-            StartCoroutine(WaveToTheRight(startPosition, 10, 0.5f));
+            StartCoroutine(FlybyMedium());
         }
 
         if (_previousTimer < 15f && _currTimer >= 15f)
         {
-            StartCoroutine(Wave2());
+            
         }
         
         _previousTimer = _currTimer;
         _currTimer += Time.deltaTime;
     }
 
-    private IEnumerator Wave2()
+    // Waves
+    private IEnumerator FlybySimple()
+    {
+        yield return new WaitForEndOfFrame();
+    }
+
+    private IEnumerator FlybyMedium()
+    {
+        GameObject prefLine = Resources.Load<GameObject>("PrefabEnemies/en_line_shooter");
+        GameObject prefDouble = Resources.Load<GameObject>("PrefabEnemies/en_double");
+        float spawnDelay = 3f;
+        
+        DoIt(prefLine, "left_2/2", new Vector3(6, -5, 0));
+        DoIt(prefLine, "right_2/2", new Vector3(-6, -5, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+        DoIt(prefDouble, "left_2/2", new Vector3(6, -3, 0));
+        DoIt(prefDouble, "right_2/2", new Vector3(-6, -3, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+        DoIt(prefLine, "left_2/2", new Vector3(6, -1, 0));
+        DoIt(prefLine, "right_2/2", new Vector3(-6, -1, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+        DoIt(prefDouble, "left_2/2", new Vector3(6, 1, 0));
+        DoIt(prefDouble, "right_2/2", new Vector3(-6, 1, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+        DoIt(prefLine, "left_2/2", new Vector3(6, 3, 0));
+        DoIt(prefLine, "right_2/2", new Vector3(-6, 3, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+        DoIt(prefDouble, "left_2/2", new Vector3(6, 5, 0));
+        DoIt(prefDouble, "right_2/2", new Vector3(-6, 5, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+        DoIt(prefLine, "left_2/2", new Vector3(6, 7, 0));
+        DoIt(prefLine, "right_2/2", new Vector3(-6, 7, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+        DoIt(prefDouble, "left_2/2", new Vector3(6, 9, 0));
+        DoIt(prefDouble, "right_2/2", new Vector3(-6, 9, 0));
+        yield return new WaitForSeconds(spawnDelay);
+
+
+        void DoIt(GameObject prefab, string startPosition, Vector3 targetPosition)
+        {
+            GameObject created = CreateEnemy(prefab, _spawnerSetup.GetPosition(startPosition), 270);
+            created.GetComponent<MoveAtTargetPosition>().enabled = true;
+            created.GetComponent<MoveAtTargetPosition>()._targetPosition = targetPosition;
+            created.GetComponent<MoveAtTargetPosition>()._speed = 1f;
+
+            created.GetComponent<AimAtTarget>().enabled = true;
+            created.GetComponent<AimAtTarget>()._target = _playerTransform;
+        }
+    }
+
+    private IEnumerator TestWave2()
     {
             void DoIt(string position)
             {
@@ -51,7 +108,7 @@ public class stage_script_1 : MonoBehaviour
 
     }
 
-    private IEnumerator WaveToTheRight(Vector3 startPosition, float amountEnemies, float enemyDelay)
+    private IEnumerator TestWave1(Vector3 startPosition, float amountEnemies, float enemyDelay)
     {
         float spawnedEnemies = 0;
         while(spawnedEnemies < amountEnemies)

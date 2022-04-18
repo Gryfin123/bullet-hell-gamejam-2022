@@ -6,7 +6,7 @@ public class AimAtTarget : MonoBehaviour
 {
     public bool _canSpin = true;
     [SerializeField] public Transform _target;
-    [SerializeField] public float _speed;
+    [SerializeField] public float _speed = 1000;
 
 
     // Update is called once per frame
