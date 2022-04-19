@@ -63,7 +63,19 @@ MonoBehaviour:
       m_Calls: []
   OnWeaponFired:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6287676028357635836}
+        m_TargetAssemblyTypeName: FireBullets, Assembly-CSharp
+        m_MethodName: CountFires
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6287676028357635835
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,8 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813c329c9cb23e7468df248bd8da0b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currHealth: 50
-  maxHealth: 50
+  currHealth: 30
+  maxHealth: 30
   _isInvincible: 0
 --- !u!114 &4029668890658997626
 MonoBehaviour:
@@ -236,6 +248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canFire: 1
+  _firesOnlyOnce: 0
+  _initialFireDelay: 0
+  _creationTime: 0
   _bulletManager:
   - {fileID: 8674359528887885817}
 --- !u!114 &2239584294078985215
