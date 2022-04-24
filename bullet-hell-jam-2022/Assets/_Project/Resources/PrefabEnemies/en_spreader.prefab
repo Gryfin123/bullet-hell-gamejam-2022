@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3401598520144120363, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: _deathTimer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548822461602175090, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548822461602175090, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: currHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -93,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: maxBullets
-      value: 72
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: spawnSettings
@@ -134,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBullets: 72
+  maxBullets: 84
   drawPriority: 0
   bulletSettings: {fileID: 11400000, guid: a04a6043b3eff3c47a5bdfdf937aff89, type: 2}
   spawnSettings: {fileID: 11400000, guid: 553172c428545ed49b80ead5590fe80f, type: 2}
@@ -167,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBullets: 72
+  maxBullets: 84
   drawPriority: 0
   bulletSettings: {fileID: 11400000, guid: 8b6ce2d31f506244eb2ae4d6ee1ced80, type: 2}
   spawnSettings: {fileID: 11400000, guid: 553172c428545ed49b80ead5590fe80f, type: 2}

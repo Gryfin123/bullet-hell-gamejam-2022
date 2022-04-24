@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3401598520144120363, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: _deathTimer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Color.b
       value: 0.16838734
@@ -80,8 +84,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: seed
+      value: 679f0809-896c-46b0-9c84-6fa43ff1ce5e
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: maxBullets
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: spawnSettings
@@ -91,6 +103,14 @@ PrefabInstance:
       propertyPath: bulletSettings
       value: 
       objectReference: {fileID: 11400000, guid: fc177d7c9307d034d93c828b6137ccc6, type: 2}
+    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: maxActiveBullets
+      value: 1023
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: currentActiveBullets
+      value: 1023
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
 --- !u!114 &5720261784656123912 stripped

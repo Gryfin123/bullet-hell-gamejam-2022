@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a23ae2178c4258a35e0704bcdfe093, type: 3}
   m_Name: ss_spread
   m_EditorClassIdentifier: 
-  fireRate: 8
+  fireRate: 6
   burstCount: 4
   burstDelay: 0.2
   spawnDir: 0
   directionArc: 0
   randomise: 0
   onEdge: 0
-  numSides: 6
+  numSides: 7
   numPerSide: 1
   radius: 0.5
   arc: 60

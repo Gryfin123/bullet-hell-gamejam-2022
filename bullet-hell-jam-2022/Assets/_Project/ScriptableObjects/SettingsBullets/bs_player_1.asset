@@ -20,19 +20,20 @@ MonoBehaviour:
   lifetime: 2
   speed: 12
   moveWithTransform: 0
+  rotateWithTransform: 0
   damage: 1
   size: 0.5
   colliderSize: 1
   angularVelocity: 0
-  startColor: {r: 1, g: 1, b: 1, a: 0.41960785}
+  startColor: {r: 1, g: 1, b: 1, a: 0.7294118}
   useColorOverTime: 1
   colorCurveUsage: 1
   colorCurveTime: 0.6
   colorOverTime:
     serializedVersion: 2
-    key0: {r: 0, g: 0.8901961, b: 1, a: 1}
-    key1: {r: 0, g: 0.33621898, b: 0.6698113, a: 1}
-    key2: {r: 0, g: 0.81465507, b: 1, a: 0}
+    key0: {r: 1, g: 0.8654537, b: 0, a: 1}
+    key1: {r: 0.67058825, g: 0.31872553, b: 0, a: 1}
+    key2: {r: 1, g: 0.8534628, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}

@@ -82,8 +82,6 @@ public class SpawnerSetup : MonoBehaviour
                 _positions.Add(new ExpendedPosition(name, newX, newY, 0));
             }
         }
-
-
     }
 
     private string GenerateName(string pos, float x, float outof)

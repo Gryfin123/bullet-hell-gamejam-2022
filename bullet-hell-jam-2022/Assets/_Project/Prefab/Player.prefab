@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 8348095075951470927}
   - component: {fileID: 4367939738999187850}
   - component: {fileID: 9216936789301740952}
+  - component: {fileID: 8342666067461014258}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -377,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelBoundries: {fileID: 0}
   _playerInput: {fileID: 11400000, guid: 945ec0365077176418488737deed54be, type: 2}
-  _playerSpeedStandard: 6
+  _playerSpeedStandard: 9
   _playerSpeedFocus: 2
   _inWarp: 0
   _realityLayer:
@@ -439,8 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813c329c9cb23e7468df248bd8da0b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currHealth: 2
-  maxHealth: 2
+  currHealth: 5
+  maxHealth: 5
   _isInvincible: 0
 --- !u!114 &9216936789301740952
 MonoBehaviour:
@@ -455,6 +456,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthComponent: {fileID: 4367939738999187850}
-  _timeToRegenerate: 30
+  _timeToRegenerateShield: 15
   _timeInvincibility: 2
   _shieldGameObject: {fileID: 5673614207031755484}
+--- !u!114 &8342666067461014258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348095075951470923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99ea4b4c86087b498f587c4d8b738e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

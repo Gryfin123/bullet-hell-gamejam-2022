@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8809557182684040236
+--- !u!1001 &8467555117275408237
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,23 +13,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3166911941860650262, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: _rotationSpeed
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
-    - target: {fileID: 3166911941860650262, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-      propertyPath: _bulletManagers
-      value: 
-      objectReference: {fileID: 3243583069795476183}
+    - target: {fileID: 5548822461602175090, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548822461602175090, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: currHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 667b2964541c9f54da412e8f4e54f2cb, type: 3}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Color.b
-      value: 0.9960785
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Color.g
-      value: 0.7725491
+      value: 0.7603097
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Color.r
@@ -43,14 +47,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-      propertyPath: _bulletManager.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6287676028357635836, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-      propertyPath: _bulletManager.Array.data[0]
-      value: 
-      objectReference: {fileID: 153212123210355669}
     - target: {fileID: 6287676028357635837, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -100,6 +96,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: maxBullets
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: spawnSettings
       value: 
       objectReference: {fileID: 11400000, guid: ecb065f7683339841b0a9ca79565c6ef, type: 2}
@@ -109,19 +109,3 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: a7272ef7eabda454cb71df1b3c1372f0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
---- !u!1 &3243583069795476183 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6287676028357635835, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-  m_PrefabInstance: {fileID: 8809557182684040236}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &153212123210355669 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
-  m_PrefabInstance: {fileID: 8809557182684040236}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

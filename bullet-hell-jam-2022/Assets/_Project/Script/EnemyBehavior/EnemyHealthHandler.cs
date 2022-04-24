@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyHealthHandler : MonoBehaviour
 {
     [SerializeField] private GameObject _bulletManagers;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Health _healthComponent;
     
     private Coroutine _flashCoroutine;
@@ -17,7 +18,8 @@ public class EnemyHealthHandler : MonoBehaviour
     {
         // Try to fetch health component if not already assigned
         _healthComponent = gameObject.GetComponent<Health>();
-        _defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
+        if (_spriteRenderer == null) _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _defaultColor = _spriteRenderer.color;
     }
 
     private void OnEnable() {
@@ -39,10 +41,6 @@ public class EnemyHealthHandler : MonoBehaviour
 
     private void AllHpLost(float newHp, float damageDealt)
     {
-         // Make sure bullets wont dissapear together with enemy. 
-         // Give them 30 seconds to fly off the screen.
-        _bulletManagers.transform.parent = null;
-        Destroy(_bulletManagers, 30f);
         Destroy(gameObject);
     }
     private void GettingHit(float newHp, float damageDealt)
@@ -53,8 +51,8 @@ public class EnemyHealthHandler : MonoBehaviour
 
     private IEnumerator FlashWhite()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
+        _spriteRenderer.color = new Color(255,255,255);
         yield return new WaitForSeconds(0.1f);
-        gameObject.GetComponent<SpriteRenderer>().color = _defaultColor;
+        _spriteRenderer.color = _defaultColor;
     }
 }

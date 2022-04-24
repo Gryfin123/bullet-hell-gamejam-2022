@@ -38,18 +38,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929594080715711949}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxBullets: 1023
   drawPriority: 0
-  bulletSettings: {fileID: 0}
-  spawnSettings: {fileID: 0}
-  currentActiveBullets: 0
-  maxActiveBullets: 0
-  seed: 84390911-68ee-4cab-8c46-0995fa62785b
+  bulletSettings: {fileID: 11400000, guid: fc177d7c9307d034d93c828b6137ccc6, type: 2}
+  spawnSettings: {fileID: 11400000, guid: 2c65a8ac7bd974d45a90f688bb87999e, type: 2}
+  currentActiveBullets: 1023
+  maxActiveBullets: 1023
+  seed: 44ca18a5-aec2-4f77-ae46-a96009a9c11b
   randomiseSeedOnAwake: 1
   playingEditorAnimation: 0
   OnBulletDied:
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3334632730522146279}
   - component: {fileID: 1263612275822343653}
   - component: {fileID: 3166911941860650262}
+  - component: {fileID: 3401598520144120363}
   m_Layer: 7
   m_Name: en_enemy_base
   m_TagString: Untagged
@@ -218,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813c329c9cb23e7468df248bd8da0b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currHealth: 30
-  maxHealth: 30
+  currHealth: 20
+  maxHealth: 20
   _isInvincible: 0
 --- !u!114 &4029668890658997626
 MonoBehaviour:
@@ -234,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletManagers: {fileID: 1929594080715711949}
+  _spriteRenderer: {fileID: 0}
   _healthComponent: {fileID: 5548822461602175090}
 --- !u!114 &6287676028357635836
 MonoBehaviour:
@@ -248,9 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canFire: 1
-  _firesOnlyOnce: 0
+  _fireLimit: 0
   _initialFireDelay: 0
-  _creationTime: 0
   _bulletManager:
   - {fileID: 8674359528887885817}
 --- !u!114 &2239584294078985215
@@ -267,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canSpin: 1
   _target: {fileID: 0}
+  _angleOffset: 0
   _speed: 1000
 --- !u!114 &7613442921273025714
 MonoBehaviour:
@@ -329,3 +331,15 @@ MonoBehaviour:
   _canSpin: 1
   _rotationSpeed: 30
   _bulletManagers: {fileID: 1929594080715711949}
+--- !u!114 &3401598520144120363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287676028357635835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99ea4b4c86087b498f587c4d8b738e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

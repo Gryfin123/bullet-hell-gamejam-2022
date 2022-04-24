@@ -11,6 +11,8 @@ public class InputScriptableObject : ScriptableObject, GameInput.IGameplayAction
     // Gamplay
     public event UnityAction _warpEvent; // = delegate{};
     public event UnityAction _pauseEvent; // = delegate{};
+    public event UnityAction _quitEvent; // = delegate{};
+    public event UnityAction _restartEvent; // = delegate{};
     public event UnityAction<bool> _shootEvent;// = delegate{};
     public event UnityAction<bool> _focusEvent;// = delegate{};
     public event UnityAction<Vector2> _moveEvent;// = delegate{};
@@ -134,5 +136,19 @@ public class InputScriptableObject : ScriptableObject, GameInput.IGameplayAction
         if (_leaveEvent != null
             && context.phase == InputActionPhase.Performed)
             _leaveEvent.Invoke();
+    }
+
+    public void OnRestart(InputAction.CallbackContext context)
+    {
+        if (_restartEvent != null
+            && context.phase == InputActionPhase.Performed)
+            _restartEvent.Invoke();
+    }
+
+    public void OnQuit(InputAction.CallbackContext context)
+    {
+        if (_quitEvent != null
+            && context.phase == InputActionPhase.Performed)
+            _quitEvent.Invoke();
     }
 }

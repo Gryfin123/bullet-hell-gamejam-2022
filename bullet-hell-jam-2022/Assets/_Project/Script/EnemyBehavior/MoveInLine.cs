@@ -15,9 +15,8 @@ public class MoveInLine : MonoBehaviour
     {
         if (_canMove)
         {
-            float angleInRadians = (_angle + _currRotation) * Mathf.Deg2Rad;
-            Vector3 v3 = new Vector2(Mathf.Sin(angleInRadians), Mathf.Cos(angleInRadians));
-            transform.position += v3 * _speed * Time.deltaTime;
+            float angleInRadians = ((_angle + _currRotation)) * Mathf.Deg2Rad;
+            transform.position += new Vector3(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians), 0) * _speed * Time.deltaTime;
             _currRotation += _rotation * Time.deltaTime;
         }
     }

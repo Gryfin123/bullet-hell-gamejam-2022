@@ -20,6 +20,7 @@ MonoBehaviour:
   lifetime: 12
   speed: 3
   moveWithTransform: 0
+  rotateWithTransform: 0
   damage: 1
   size: 0.6
   colliderSize: 0.6

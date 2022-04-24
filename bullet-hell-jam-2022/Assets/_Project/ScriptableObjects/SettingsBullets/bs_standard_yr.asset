@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: bs_standard_yr
   m_EditorClassIdentifier: 
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: f7edb56f70e17b743b0d162c62826ee8, type: 2}
+  material: {fileID: 2100000, guid: 98db8b500ba527745aaf13c1bc02122e, type: 2}
   plane: 0
   waitToStart: 0
   timeToPlayWhileWaiting: 0
   lifetime: 8
   speed: 4
   moveWithTransform: 0
+  rotateWithTransform: 0
   damage: 1
   size: 0.5
-  colliderSize: 0.8
+  colliderSize: 0.5
   angularVelocity: 0
   startColor: {r: 1, g: 1, b: 1, a: 1}
   useColorOverTime: 1

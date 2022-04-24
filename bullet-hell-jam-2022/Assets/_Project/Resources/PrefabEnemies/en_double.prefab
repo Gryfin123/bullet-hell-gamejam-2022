@@ -88,6 +88,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
+      propertyPath: maxBullets
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674359528887885817, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: spawnSettings
       value: 
       objectReference: {fileID: 11400000, guid: 2c65a8ac7bd974d45a90f688bb87999e, type: 2}

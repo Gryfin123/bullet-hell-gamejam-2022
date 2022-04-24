@@ -44,8 +44,8 @@ public class Health : MonoBehaviour
             // Process taking damage
             if (currHealth - amount <= 0)
             {
-                currHealth = 0;
                 HpDroppedToZero.Invoke(0, amount);
+                currHealth = 0;
             } 
             else
             {

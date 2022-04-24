@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerHealthHandler : MonoBehaviour
 {
     [SerializeField] private Health _healthComponent;
-    [SerializeField] private float _timeToRegenerate = 30;
+    [SerializeField] private float _timeToRegenerateShield = 20;
     [SerializeField] private float _timeInvincibility = 2;
     [SerializeField] private GameObject _shieldGameObject;
     
 
-    private Coroutine _regainHpCoroutine = null;
+    private bool _isShielded = true;
+    private Coroutine _regainShieldCoroutine = null;
     private Coroutine _invincibilityCoroutine = null;
     private Color _defaultColor;
 
@@ -29,45 +31,48 @@ public class PlayerHealthHandler : MonoBehaviour
         // Attach events
         _healthComponent.HpDroppedToZero += GameOver;
         _healthComponent.HpDecreased += GettingHit;
-        _healthComponent.HpDecreased += GettingCriticallyHit;
     }
 
     private void OnDisable() {
         // Attach events
         _healthComponent.HpDroppedToZero -= GameOver;
         _healthComponent.HpDecreased -= GettingHit;
-        _healthComponent.HpDecreased -= GettingCriticallyHit;
     }
 
     private void GameOver(float newHp, float damageDealt)
     {
-        Destroy(gameObject);
-        Debug.Log("All hp is lost.");
+        if (_isShielded)
+        {
+            _healthComponent.Heal(1);
+        }
+        else
+        {
+            Debug.Log("All hp is lost.");
+            Destroy(gameObject);
+        }
     }
     private void GettingHit(float newHp, float damageDealt)
     {
-        if (!_healthComponent.IsInvincible)
+        StartCoroutine(OnHitEffect());
+        _invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
+
+        if (_isShielded)
         {
-            StartCoroutine(OnHitEffect());
-            _invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
-        }
-    }
-    private void GettingCriticallyHit(float newHp, float damageDealt)
-    {
-        if (newHp == 1 && _regainHpCoroutine == null)
-        {
-            ChangeToCriticallyInjured();
-            _regainHpCoroutine = StartCoroutine(RegenerateInjury());
+            _healthComponent.Heal(1);
+            ShutDownShield();
+            _regainShieldCoroutine = StartCoroutine(RegenerateShield());
         }
     }
 
-    private void ChangeToCriticallyInjured()
+    private void ShutDownShield()
     {
+        _isShielded = false;
         _shieldGameObject.SetActive(false);
     }
-    private void ChangeToNormal()
+    private void TurnOnShield()
     {
         _shieldGameObject.SetActive(true);
+        _isShielded = true;
     }
 
     private IEnumerator OnHitEffect()
@@ -103,14 +108,13 @@ public class PlayerHealthHandler : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-    private IEnumerator RegenerateInjury()
+    private IEnumerator RegenerateShield()
     {   
-        yield return new WaitForSeconds(_timeToRegenerate);
+        yield return new WaitForSeconds(_timeToRegenerateShield);
         if (_healthComponent.GetCurrHealth() != 0)
         {
-            _healthComponent.Heal(1);
-            ChangeToNormal();
+            TurnOnShield();
         }
-        _regainHpCoroutine = null;
+        _regainShieldCoroutine = null;
     }
 }

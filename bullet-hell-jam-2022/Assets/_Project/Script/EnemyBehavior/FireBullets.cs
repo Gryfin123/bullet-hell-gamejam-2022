@@ -7,7 +7,7 @@ public class FireBullets : MonoBehaviour
     public bool _canFire = true;
     public int _fireLimit = 0; // Zero means there is no limit
     public float _initialFireDelay = 0f;
-    public float _creationTime;
+    private float _creationTime;
     [SerializeField] private List<BulletFury.BulletManager> _bulletManager; 
     private int _timesFired = 0;
 
@@ -26,7 +26,7 @@ public class FireBullets : MonoBehaviour
         {
             foreach(BulletFury.BulletManager curr in _bulletManager)
             {
-                curr.Spawn(transform.position, curr.transform.up);
+                curr.Spawn(curr.gameObject.transform.position, curr.transform.up);
             }
         }
     }
