@@ -6,7 +6,6 @@ public class stage_script_1 : MonoBehaviour
 {
 
     [SerializeField] private SpawnerSetup _spawnerSetup;
-    [SerializeField] private Transform _playerTransform;
     [SerializeField] private GameObject _prefabLineShooter;
     [SerializeField] private GameObject _prefabDoubleShooter;
     [SerializeField] private GameObject _prefabSpreader;
@@ -16,26 +15,28 @@ public class stage_script_1 : MonoBehaviour
     [SerializeField] private float[] _waveTimers;
 
 
+    [SerializeField] public Transform _playerTransform;
+    public Coroutine _gameflow;
+
     private float _timerCountdown = 5f;
-    private Coroutine _gameflow;
     private int _currEnemyCount = 0;
     private int _currCheckpoint = 1;
 
-    private void Update() 
+    private void Start() 
     {        
-        if (_timerCountdown <= 0 && _gameflow == null)
-        {
-            _gameflow = StartCoroutine(GameFlow());
-        }
-        else
-        {
-            _timerCountdown -= Time.deltaTime;
-        }
+        StartGameProgression();
+    }
+
+    public void StartGameProgression()
+    {
+        _gameflow = StartCoroutine(GameFlow());
     }
 
     // Waves 
     private IEnumerator GameFlow()
     {
+        yield return new WaitForSeconds(5f);
+
         // Stage 1
         if (_currCheckpoint == 1)
         {
@@ -78,7 +79,7 @@ public class stage_script_1 : MonoBehaviour
             {
                 yield return new WaitForEndOfFrame();
             }
-            _currCheckpoint = 2;
+            SetCheckpoint(2);
         }
 
         // Stage 2
@@ -101,9 +102,9 @@ public class stage_script_1 : MonoBehaviour
 
             for(int j = 0; j < 3; j++)
             {
-                for(int i = 1; i < 3; i++)
+                for(int i = 1; i < 4; i++)
                 {
-                    CreateCopters(_prefabAssasin, "top_" + i + "/3", 270, 0, 1.5f);
+                    CreateCopters(_prefabAssasin, "top_" + i + "/4", 270, 0, 1.5f);
                 }
                 yield return new WaitForSeconds(5f);
             }
@@ -113,7 +114,7 @@ public class stage_script_1 : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
             
-            _currCheckpoint = 3;
+            SetCheckpoint(3);
         }
 
         // Stage 3

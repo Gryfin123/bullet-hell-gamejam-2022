@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameStateControler : MonoBehaviour
 {
     [SerializeField] InputScriptableObject _iso;
+    [SerializeField] SpawnerSetup _ss;
     [SerializeField] DeathEvent _playerDeathEvent;
+    [SerializeField] GameObject _playerPrefab;
+    [SerializeField] stage_script_1 _stageScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +25,33 @@ public class GameStateControler : MonoBehaviour
     }
     private void RestartStage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Stop game progression
+        StopCoroutine(_stageScript._gameflow);
+
+        // Delete enemies
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+
+        // Delete player
+        _playerDeathEvent.OnDestruction -= RestartOnPlayerDeath;
+        if (_stageScript._playerTransform != null)
+        {
+            Destroy(_stageScript._playerTransform.gameObject);
+        }
+
+        // Create players
+        GameObject created = Instantiate(_playerPrefab, new Vector3(0, -8, 0), new Quaternion());
+        created.gameObject.GetComponent<PlayerControls>()._levelBoundries = _ss;
+
+        _playerDeathEvent = created.GetComponent<DeathEvent>();
+        _playerDeathEvent.OnDestruction += RestartOnPlayerDeath;
+
+
+        // Start game progression
+        _stageScript._playerTransform = created.transform;
+        _stageScript.StartGameProgression();
     }
 
     private void RestartOnPlayerDeath()

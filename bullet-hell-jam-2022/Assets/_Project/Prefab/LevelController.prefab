@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnerSetup: {fileID: 7282009748100882548}
-  _playerTransform: {fileID: 0}
   _prefabLineShooter: {fileID: 6936009385293801738, guid: 63fcbd4a63d358c4aab1d7e0c48a1255, type: 3}
   _prefabDoubleShooter: {fileID: 8659061261502193197, guid: bf4035d84a7a0dc46b92704feaa6fc30, type: 3}
   _prefabSpreader: {fileID: 4017519375453553632, guid: c34290954a238144bbb2f630fb244c9e, type: 3}
@@ -60,6 +59,7 @@ MonoBehaviour:
   - 90
   - 110
   - 130
+  _playerTransform: {fileID: 0}
 --- !u!114 &7282009748100882548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,3 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _iso: {fileID: 11400000, guid: 945ec0365077176418488737deed54be, type: 2}
+  _ss: {fileID: 7282009748100882548}
+  _playerDeathEvent: {fileID: 0}
+  _playerPrefab: {fileID: 0}
+  _stageScript: {fileID: 7282009748100882550}

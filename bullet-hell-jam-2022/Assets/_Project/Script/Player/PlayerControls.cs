@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     [Header("Controls")]
-    [SerializeField] SpawnerSetup _levelBoundries;
+    [SerializeField] public SpawnerSetup _levelBoundries;
     [SerializeField] InputScriptableObject _playerInput;
 
     [Header("Stats")]

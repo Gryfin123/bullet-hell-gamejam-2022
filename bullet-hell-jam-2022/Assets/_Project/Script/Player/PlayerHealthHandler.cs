@@ -12,9 +12,6 @@ public class PlayerHealthHandler : MonoBehaviour
     [SerializeField] private float _timeInvincibility = 2;
     [SerializeField] private GameObject _shieldGameObject;
     
-
-    private bool _isShielded = true;
-    private Coroutine _regainShieldCoroutine = null;
     private Coroutine _invincibilityCoroutine = null;
     private Color _defaultColor;
 
@@ -41,46 +38,44 @@ public class PlayerHealthHandler : MonoBehaviour
 
     private void GameOver(float newHp, float damageDealt)
     {
-        if (_isShielded)
-        {
-            _healthComponent.Heal(1);
-        }
-        else
-        {
-            Debug.Log("All hp is lost.");
-            Destroy(gameObject);
-        }
+        StartCoroutine(OnHitEffect());
     }
     private void GettingHit(float newHp, float damageDealt)
     {
         StartCoroutine(OnHitEffect());
         _invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
-
-        if (_isShielded)
-        {
-            _healthComponent.Heal(1);
-            ShutDownShield();
-            _regainShieldCoroutine = StartCoroutine(RegenerateShield());
-        }
     }
-
-    private void ShutDownShield()
-    {
-        _isShielded = false;
-        _shieldGameObject.SetActive(false);
-    }
-    private void TurnOnShield()
-    {
-        _shieldGameObject.SetActive(true);
-        _isShielded = true;
-    }
-
     private IEnumerator OnHitEffect()
     {
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.3f);
+        float stopTime = 0.3f;
+        Coroutine visual = StartCoroutine(OnHitVisualEffect(stopTime));
+        yield return new WaitForSecondsRealtime(stopTime);
         Time.timeScale = 1;
+
+        if (_healthComponent.GetCurrHealth() == 0)
+        {                
+            Debug.Log("All hp is lost.");
+            Destroy(gameObject);
+        }
     }
+    private IEnumerator OnHitVisualEffect(float duration)
+    {
+        float startSize = 5;
+        _shieldGameObject.transform.localScale = new Vector3(startSize, startSize, 0);
+        _shieldGameObject.SetActive(true);
+        float reductionValue = startSize * 1f / 60f * 1f / duration / 10f;
+        while(_shieldGameObject.transform.localScale.x > 0)
+        {
+            _shieldGameObject.transform.localScale -= new Vector3(reductionValue, reductionValue, 0);
+            Debug.Log(reductionValue);
+            yield return new WaitForEndOfFrame();
+        }
+
+        _shieldGameObject.transform.localScale = new Vector3(0,0,0);
+        _shieldGameObject.SetActive(false);
+    }
+
     private IEnumerator InvincibilityCoroutine()
     {
         _healthComponent.IsInvincible = true;
@@ -107,14 +102,5 @@ public class PlayerHealthHandler : MonoBehaviour
             flashed = !flashed;
             yield return new WaitForSeconds(0.1f);
         }
-    }
-    private IEnumerator RegenerateShield()
-    {   
-        yield return new WaitForSeconds(_timeToRegenerateShield);
-        if (_healthComponent.GetCurrHealth() != 0)
-        {
-            TurnOnShield();
-        }
-        _regainShieldCoroutine = null;
     }
 }
