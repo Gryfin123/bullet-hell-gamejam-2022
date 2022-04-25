@@ -17,13 +17,13 @@ MonoBehaviour:
   plane: 0
   waitToStart: 0
   timeToPlayWhileWaiting: 0
-  lifetime: 1
-  speed: 10
+  lifetime: 0.9
+  speed: 15
   moveWithTransform: 0
   rotateWithTransform: 0
   damage: 1
   size: 1
-  colliderSize: 1
+  colliderSize: 0.7
   angularVelocity: 0
   startColor: {r: 1, g: 1, b: 1, a: 1}
   useColorOverTime: 1

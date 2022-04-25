@@ -13,6 +13,10 @@ public class PlayerHealthHandler : MonoBehaviour
     
     private Coroutine _invincibilityCoroutine = null;
     private Color _defaultColor;
+    [SerializeField] private Color _colorFull;
+    [SerializeField] private Color _colorInjured;
+    [SerializeField] private Color _colorCritical;
+
 
     // Start is called before the first frame update
     
@@ -41,6 +45,7 @@ public class PlayerHealthHandler : MonoBehaviour
     }
     private void GettingHit(float newHp, float damageDealt)
     {
+        UpdatePlayerColor();
         StartCoroutine(OnHitEffect());
         _invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
     }
@@ -100,5 +105,26 @@ public class PlayerHealthHandler : MonoBehaviour
             flashed = !flashed;
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    private void UpdatePlayerColor()
+    {
+        if (_healthComponent.GetCurrHealth() >= 3)
+        {
+            _defaultColor = _colorFull;
+            gameObject.GetComponent<SpriteRenderer>().color = _colorFull;
+        }
+        else if (_healthComponent.GetCurrHealth() == 2)
+        {
+            _defaultColor = _colorInjured;
+            gameObject.GetComponent<SpriteRenderer>().color = _colorInjured;
+        }
+        else if (_healthComponent.GetCurrHealth() == 1)
+        {
+            _defaultColor = _colorCritical;
+            gameObject.GetComponent<SpriteRenderer>().color = _colorCritical;
+        }
+        Debug.Log(_defaultColor.ToString());
+        Debug.Log(_healthComponent.GetCurrHealth().ToString());
     }
 }
