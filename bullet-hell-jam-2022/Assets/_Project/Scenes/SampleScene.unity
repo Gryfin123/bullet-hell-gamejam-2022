@@ -1156,54 +1156,6 @@ PrefabInstance:
       propertyPath: OnBulletDied.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnBulletDie
       objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorFull.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorFull.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorFull.g
-      value: 0.7075472
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorFull.r
-      value: 0.18985857
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorInjured.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorInjured.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorInjured.g
-      value: 0.67031866
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorInjured.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorCritical.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorCritical.b
-      value: 0.0506853
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorCritical.g
-      value: 0.0506853
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216936789301740952, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
-      propertyPath: _colorCritical.r
-      value: 0.6320754
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
 --- !u!114 &8348095074833786451 stripped

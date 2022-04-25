@@ -525,7 +525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 1300, y: 1600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915141231
@@ -568,9 +568,11 @@ MonoBehaviour:
     escape, but you feel something, power surging through you. All other prisoners,
     all your cell mates, all enemies and friends alike, all your brothers belive
     in you. You will lead them out of here to be free again.\n\nAll their hopes and
-    dreams manifest, as you feel super jacked with super powers. No one will stand
-    on your way to freedom. Or will they?\n\n(All policeman and their equipment also
-    look like budget square sprites. There must have been something in this comet)\n"
+    dreams manifest, as you feel super jacked with super powers. Like you could take
+    2 bullets to the chest and live to take one more. Strange. No one will stand
+    on your way to freedom now. Or will they? Police started chase through the city.\n\n(All
+    policeman and their equipment also look like budget square sprites. There must
+    have been something in this comet)\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

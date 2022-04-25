@@ -65,11 +65,11 @@ public class PlayerControls : MonoBehaviour
     {
         if (_playerInput.IsFocusing())
         {
-            _weapons[1].Spawn(transform.position, Vector3.up);
+            _weapons[1].Spawn(_weapons[1].transform.position, Vector3.up);
         }
         else
         {
-            _weapons[0].Spawn(transform.position, Vector3.up);
+            _weapons[0].Spawn(_weapons[0].transform.position, Vector3.up);
         }
     }
     private void WarpIn()
