@@ -1,29 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class stage_script_1 : MonoBehaviour
 {
-
+    [Header("Arsenal")]
     [SerializeField] private SpawnerSetup _spawnerSetup;
     [SerializeField] private GameObject _prefabLineShooter;
     [SerializeField] private GameObject _prefabDoubleShooter;
     [SerializeField] private GameObject _prefabSpreader;
     [SerializeField] private GameObject _prefabAssasin;
     [SerializeField] private GameObject _prefabBoss;
+    
+    [Header("Tutorial")]
+    [SerializeField] private GameObject _tutorialCanvas;
+    [SerializeField] private InputScriptableObject _input;
+    [SerializeField] private Color _checkColor;
+    [SerializeField] private TMP_Text _textMove;
+    private bool _didMove = false;
+    [SerializeField] private TMP_Text _textShoot;
+    private bool _didShoot = false;
+    [SerializeField] private TMP_Text _textSlowdown;
+    private bool _didSlowdown = false;
+    [SerializeField] private TMP_Text _textDestroyTargets;
+    private bool _didDestroyTarget = false;
+    [SerializeField] private TMP_Text _textRememberToNotGetKilled;
+    private bool _didRemeber = false;
 
-    [SerializeField] private float[] _waveTimers;
 
-
+    [Header("Player")]
     [SerializeField] public Transform _playerTransform;
+    [SerializeField] public int _startingCheckpoint = 0;
     public Coroutine _gameflow;
+
 
     private float _timerCountdown = 5f;
     private int _currEnemyCount = 0;
-    private int _currCheckpoint = 1;
+    private int _currCheckpoint = 0;
 
     private void Start() 
-    {        
+    {    
+        _currCheckpoint = _startingCheckpoint;
         StartGameProgression();
     }
 
@@ -35,6 +53,71 @@ public class stage_script_1 : MonoBehaviour
     // Waves 
     private IEnumerator GameFlow()
     {
+        yield return new WaitForSeconds(0.5f);
+        if (_currCheckpoint == 0)
+        {
+            _tutorialCanvas.SetActive(true);
+            // create dummy guys
+            CreateTargetPracticeEnemy("top_1/4", new Vector3(-3, 6, 0), 1);
+            CreateTargetPracticeEnemy("top_3/4", new Vector3(3, 6, 0), 1);
+            CreateTargetPracticeEnemy("left_1/4", new Vector3(-3, -6, 0), 1);
+            CreateTargetPracticeEnemy("right_1/4", new Vector3(3, -6, 0), 1);
+
+
+            bool _movedVertically = false;
+            bool _movedHorizontally = false;
+            
+                Debug.Log("Doing it " + _didMove 
+                            + " " + _didShoot
+                            + " " + _didSlowdown 
+                            + " " + _didDestroyTarget 
+                            + " " + _didRemeber);
+            while (!(_didMove && _didShoot && _didSlowdown && _didDestroyTarget && _didRemeber))
+            {
+                Debug.Log("Doing it " + _didMove 
+                            + " " + _didShoot
+                            + " " + _didSlowdown 
+                            + " " + _didDestroyTarget 
+                            + " " + _didRemeber);
+                Vector3 input = (Vector3)_input.GetMovementAxis();
+                if (input.x != 0) _movedHorizontally = true; 
+                if (input.y != 0) _movedVertically = true;
+                if (_movedHorizontally && _movedVertically)
+                {
+                    TutCheckMovement();
+                }
+
+                if (_input.IsShootinging())
+                {
+                    TutCheckShoot();
+                }
+
+                if (_input.IsFocusing())
+                {
+                    TutCheckSlowdown();
+                }
+
+                if (_currEnemyCount == 0)
+                {
+                    TutCheckDestroyTargets();
+                }
+
+                if (_didMove && _didShoot && _didSlowdown && _didDestroyTarget)
+                {
+                    yield return new WaitForSeconds(5f);
+                    TutCheckRemember();
+                }
+
+                yield return new WaitForEndOfFrame();
+            }
+
+            // set checkpoin
+            SetCheckpoint(1);
+
+            yield return new WaitForSeconds(5f);
+            _tutorialCanvas.SetActive(false);
+        }
+        
         yield return new WaitForSeconds(5f);
 
         // Stage 1
@@ -122,10 +205,29 @@ public class stage_script_1 : MonoBehaviour
         {
             GameObject boss = CreateEnemyBasic(_prefabBoss, _spawnerSetup.GetPosition("top_1/2"), 0, 9999);
             boss.GetComponent<AssasinBehavior>().InitialSetup(_playerTransform);
+
+            while (_currEnemyCount > 0)
+            {
+                yield return new WaitForEndOfFrame();
+            }
         }
 
+        // All done
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(2);
         
         // Functions
+        void CreateTargetPracticeEnemy(string startPosition, Vector3 targetPosition, float speed)
+        {
+            GameObject created = CreateEnemyBasic(_prefabLineShooter, _spawnerSetup.GetPosition(startPosition), 270, 20);
+            created.GetComponent<MoveAtTargetPosition>().enabled = true;
+            created.GetComponent<MoveAtTargetPosition>()._targetPosition = targetPosition;
+            created.GetComponent<MoveAtTargetPosition>()._speed = speed;
+
+            created.GetComponent<FireBullets>().enabled = false;
+            created.GetComponent<AimAtTarget>().enabled = true;
+            created.GetComponent<AimAtTarget>()._target = _playerTransform;
+        }
         void CreateNonShootingEnemy(string startPosition, float direction, float rotation, float speed)
         {
             GameObject created = CreateEnemyBasic(_prefabLineShooter, _spawnerSetup.GetPosition(startPosition), 270, 20);
@@ -135,6 +237,7 @@ public class stage_script_1 : MonoBehaviour
             created.GetComponent<MoveInLine>()._speed = speed;
 
             created.GetComponent<FireBullets>().enabled = false;
+            created.GetComponent<AimAtTarget>().enabled = true;
             created.GetComponent<AimAtTarget>()._target = _playerTransform;
         }
         void CreateShooters1(GameObject prefab, string startPosition, float direction, float rotation, float speed)
@@ -191,8 +294,8 @@ public class stage_script_1 : MonoBehaviour
     // Waves tests
     private IEnumerator FlybyMedium()
     {
-        GameObject prefLine = Resources.Load<GameObject>("PrefabEnemies/en_line_shooter");
-        GameObject prefDouble = Resources.Load<GameObject>("PrefabEnemies/en_double");
+        GameObject prefLine = _prefabLineShooter;
+        GameObject prefDouble = _prefabDoubleShooter;
         float spawnDelay = 3f;
         
         DoIt(prefLine, "left_2/2", new Vector3(6, -5, 0));
@@ -271,6 +374,34 @@ public class stage_script_1 : MonoBehaviour
         }
         yield return new WaitForSeconds(enemyDelay);
     }
+
+    // Tutorial Function
+    private void TutCheckMovement()
+    {
+        _didMove = true;
+        _textMove.outlineColor = _checkColor;
+    }
+    private void TutCheckShoot()
+    {
+        _didShoot = true;
+        _textShoot.outlineColor = _checkColor;
+    }
+    private void TutCheckSlowdown()
+    {
+        _didSlowdown = true;
+        _textSlowdown.outlineColor = _checkColor;
+    }
+    private void TutCheckDestroyTargets()
+    {
+        _didDestroyTarget = true;
+        _textDestroyTargets .outlineColor = _checkColor;
+    }
+    private void TutCheckRemember()
+    {
+        _didRemeber = true;
+        _textRememberToNotGetKilled.outlineColor = _checkColor;
+    }
+
 
     // Utilities
     private GameObject CreateEnemyBasic(GameObject prefab, Vector3 position, float angleDegree, float destructionTime)

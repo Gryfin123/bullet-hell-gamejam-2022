@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class PlayerHealthHandler : MonoBehaviour
 {
     [SerializeField] private Health _healthComponent;
-    [SerializeField] private float _timeToRegenerateShield = 20;
     [SerializeField] private float _timeInvincibility = 2;
     [SerializeField] private GameObject _shieldGameObject;
     
@@ -68,7 +67,6 @@ public class PlayerHealthHandler : MonoBehaviour
         while(_shieldGameObject.transform.localScale.x > 0)
         {
             _shieldGameObject.transform.localScale -= new Vector3(reductionValue, reductionValue, 0);
-            Debug.Log(reductionValue);
             yield return new WaitForEndOfFrame();
         }
 
