@@ -8,15 +8,15 @@ using UnityEngine.SceneManagement;
 public class PlayerHealthHandler : MonoBehaviour
 {
     [SerializeField] private Health _healthComponent;
-    [SerializeField] private float _timeToRegenerateShield = 20;
     [SerializeField] private float _timeInvincibility = 2;
     [SerializeField] private GameObject _shieldGameObject;
     
-
-    private bool _isShielded = true;
-    private Coroutine _regainShieldCoroutine = null;
     private Coroutine _invincibilityCoroutine = null;
     private Color _defaultColor;
+    [SerializeField] private Color _colorFull;
+    [SerializeField] private Color _colorInjured;
+    [SerializeField] private Color _colorCritical;
+
 
     // Start is called before the first frame update
     
@@ -41,46 +41,44 @@ public class PlayerHealthHandler : MonoBehaviour
 
     private void GameOver(float newHp, float damageDealt)
     {
-        if (_isShielded)
-        {
-            _healthComponent.Heal(1);
-        }
-        else
-        {
+        StartCoroutine(OnHitEffect());
+    }
+    private void GettingHit(float newHp, float damageDealt)
+    {
+        UpdatePlayerColor();
+        StartCoroutine(OnHitEffect());
+        _invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
+    }
+    private IEnumerator OnHitEffect()
+    {
+        Time.timeScale = 0;
+        float stopTime = 0.3f;
+        Coroutine visual = StartCoroutine(OnHitVisualEffect(stopTime));
+        yield return new WaitForSecondsRealtime(stopTime);
+        Time.timeScale = 1;
+
+        if (_healthComponent.GetCurrHealth() == 0)
+        {                
             Debug.Log("All hp is lost.");
             Destroy(gameObject);
         }
     }
-    private void GettingHit(float newHp, float damageDealt)
+    private IEnumerator OnHitVisualEffect(float duration)
     {
-        StartCoroutine(OnHitEffect());
-        _invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
-
-        if (_isShielded)
+        float startSize = 5;
+        _shieldGameObject.transform.localScale = new Vector3(startSize, startSize, 0);
+        _shieldGameObject.SetActive(true);
+        float reductionValue = startSize * 1f / 60f * 1f / duration / 5f;
+        while(_shieldGameObject.transform.localScale.x > 0)
         {
-            _healthComponent.Heal(1);
-            ShutDownShield();
-            _regainShieldCoroutine = StartCoroutine(RegenerateShield());
+            _shieldGameObject.transform.localScale -= new Vector3(reductionValue, reductionValue, 0);
+            yield return new WaitForEndOfFrame();
         }
-    }
 
-    private void ShutDownShield()
-    {
-        _isShielded = false;
+        _shieldGameObject.transform.localScale = new Vector3(0,0,0);
         _shieldGameObject.SetActive(false);
     }
-    private void TurnOnShield()
-    {
-        _shieldGameObject.SetActive(true);
-        _isShielded = true;
-    }
 
-    private IEnumerator OnHitEffect()
-    {
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.3f);
-        Time.timeScale = 1;
-    }
     private IEnumerator InvincibilityCoroutine()
     {
         _healthComponent.IsInvincible = true;
@@ -108,13 +106,25 @@ public class PlayerHealthHandler : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-    private IEnumerator RegenerateShield()
-    {   
-        yield return new WaitForSeconds(_timeToRegenerateShield);
-        if (_healthComponent.GetCurrHealth() != 0)
+
+    private void UpdatePlayerColor()
+    {
+        if (_healthComponent.GetCurrHealth() >= 3)
         {
-            TurnOnShield();
+            _defaultColor = _colorFull;
+            gameObject.GetComponent<SpriteRenderer>().color = _colorFull;
         }
-        _regainShieldCoroutine = null;
+        else if (_healthComponent.GetCurrHealth() == 2)
+        {
+            _defaultColor = _colorInjured;
+            gameObject.GetComponent<SpriteRenderer>().color = _colorInjured;
+        }
+        else if (_healthComponent.GetCurrHealth() == 1)
+        {
+            _defaultColor = _colorCritical;
+            gameObject.GetComponent<SpriteRenderer>().color = _colorCritical;
+        }
+        Debug.Log(_defaultColor.ToString());
+        Debug.Log(_healthComponent.GetCurrHealth().ToString());
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     [Header("Controls")]
-    [SerializeField] SpawnerSetup _levelBoundries;
+    [SerializeField] public SpawnerSetup _levelBoundries;
     [SerializeField] InputScriptableObject _playerInput;
 
     [Header("Stats")]
@@ -63,9 +63,13 @@ public class PlayerControls : MonoBehaviour
     }
     private void ProcessShooting()
     {
-        foreach(BulletFury.BulletManager curr in _weapons)
+        if (_playerInput.IsFocusing())
         {
-            curr.Spawn(transform.position, Vector3.up);
+            _weapons[1].Spawn(_weapons[1].transform.position, Vector3.up);
+        }
+        else
+        {
+            _weapons[0].Spawn(_weapons[0].transform.position, Vector3.up);
         }
     }
     private void WarpIn()

@@ -13,7 +13,8 @@ public class MoveAtTarget : MonoBehaviour
     {
         if (_canMove)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+            Vector3 target = _target != null ? _target.position : new Vector3(0, 0, 0);
+            transform.position = Vector2.MoveTowards(transform.position, target, _speed * Time.deltaTime);
         }
     }
 }

@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5548822461602175090, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: maxHealth
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5548822461602175090, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: currHealth
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 6287676028357635834, guid: af2d6ef242f0b0e489e994eb667c1818, type: 3}
       propertyPath: m_Sprite

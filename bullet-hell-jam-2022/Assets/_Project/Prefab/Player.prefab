@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2983107962275001192}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.260741, y: 1.9772676, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8348095075951470921}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBullets: 1023
+  maxBullets: 60
   drawPriority: -10
   bulletSettings: {fileID: 11400000, guid: 1edc761b951796b4b8b5badc1e5abb09, type: 2}
   spawnSettings: {fileID: 11400000, guid: 8f60856532e001c42b5fa0a1ec2b47d1, type: 2}
@@ -55,19 +55,7 @@ MonoBehaviour:
   playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6496154723158680977, guid: 4aa0603cdc8aeab45b40b8f5d8642a7b, type: 3}
-        m_TargetAssemblyTypeName: BulletFury.Demo.BulletExplodeOnHit, Assembly-CSharp
-        m_MethodName: OnBulletDie
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnBulletCancelled:
     m_PersistentCalls:
       m_Calls: []
@@ -84,12 +72,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2983107962275001192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBullets: 1023
+  maxBullets: 40
   drawPriority: -10
   bulletSettings: {fileID: 11400000, guid: 233a66796e118db4a98d3e39c1e95e4c, type: 2}
   spawnSettings: {fileID: 11400000, guid: f1f7a70d3c5855b4cb60f9ebece230bf, type: 2}
@@ -126,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1544069981807957709
 Transform:
   m_ObjectHideFlags: 0
@@ -182,7 +170,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ca78342abc38471478288591e5574008, type: 3}
-  m_Color: {r: 0, g: 0.87772083, b: 1, a: 0.41960785}
+  m_Color: {r: 1, g: 0.047946326, b: 0, a: 0.41960785}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -354,7 +342,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd2eae558b7b7f94c8db05d4c4d3bac5, type: 3}
-  m_Color: {r: 0.582375, g: 0.5093005, b: 0.990566, a: 1}
+  m_Color: {r: 0.21153057, g: 0.735849, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -440,8 +428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813c329c9cb23e7468df248bd8da0b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currHealth: 5
-  maxHealth: 5
+  currHealth: 3
+  maxHealth: 3
   _isInvincible: 0
 --- !u!114 &9216936789301740952
 MonoBehaviour:
@@ -456,9 +444,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthComponent: {fileID: 4367939738999187850}
-  _timeToRegenerateShield: 15
   _timeInvincibility: 2
   _shieldGameObject: {fileID: 5673614207031755484}
+  _colorFull: {r: 0.18985857, g: 0.7075472, b: 0, a: 1}
+  _colorInjured: {r: 1, g: 0.67031866, b: 0, a: 1}
+  _colorCritical: {r: 0.6320754, g: 0.0506853, b: 0.0506853, a: 1}
 --- !u!114 &8342666067461014258
 MonoBehaviour:
   m_ObjectHideFlags: 0
