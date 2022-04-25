@@ -63,9 +63,13 @@ public class PlayerControls : MonoBehaviour
     }
     private void ProcessShooting()
     {
-        foreach(BulletFury.BulletManager curr in _weapons)
+        if (_playerInput.IsFocusing())
         {
-            curr.Spawn(transform.position, Vector3.up);
+            _weapons[1].Spawn(transform.position, Vector3.up);
+        }
+        else
+        {
+            _weapons[0].Spawn(transform.position, Vector3.up);
         }
     }
     private void WarpIn()

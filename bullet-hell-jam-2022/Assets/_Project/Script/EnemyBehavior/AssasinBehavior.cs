@@ -9,6 +9,7 @@ public class AssasinBehavior : MonoBehaviour
     [SerializeField] MoveAtTargetPosition _moveAtPosition;
     [SerializeField] Transform _target;
     [SerializeField] SwitchCopters _copterBulletSwitch;
+    [SerializeField] HealthbarManagerBoss _hbm;
 
     [Header("InitialSetup")]
     
@@ -26,11 +27,10 @@ public class AssasinBehavior : MonoBehaviour
     [SerializeField] float _speed = 2f;
 
     [Header("Phases")]
-    [SerializeField] float _phaseTreshhold1 = 850;
-    [SerializeField] float _phaseTreshhold2 = 700;
-    [SerializeField] float _phaseTreshhold3 = 550;
-    [SerializeField] float _phaseTreshhold4 = 400;
-    [SerializeField] float _phaseTreshhold5 = 250;
+    [SerializeField] float _phaseTreshhold1 = 800;
+    [SerializeField] float _phaseTreshhold2 = 600;
+    [SerializeField] float _phaseTreshhold3 = 400;
+    [SerializeField] float _phaseTreshhold4 = 200;
     int _phase = 0;
 
     [Header("Coroutines")]
@@ -39,9 +39,11 @@ public class AssasinBehavior : MonoBehaviour
 
     private void OnEnable() {
         _healthReference.HpChanged += CheckForNewPhase;
+        _healthReference.HpChanged += UpdateHealthbar;
     }
     private void OnDisable() {
         _healthReference.HpChanged -= CheckForNewPhase;
+        _healthReference.HpChanged -= UpdateHealthbar;
     }
 
     private void Update() 
@@ -82,6 +84,7 @@ public class AssasinBehavior : MonoBehaviour
     private IEnumerator Phase0()
     {
         // Initial settings
+        _healthReference.IsInvincible = true;
         _machinegunSoftcore._canFire = false;
         _machinegunHardcore._canFire = false;
         _spinAttack._canFire = false;
@@ -89,16 +92,16 @@ public class AssasinBehavior : MonoBehaviour
         Vector3 pos1 = new Vector3(0, 8, 0);
         MoveToThePoint(pos1, _speed);
 
-        _healthReference.IsInvincible = true;
-
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         // Show healthbar
         Debug.Log("Helathbar became visible");
-        yield return new WaitForSeconds(4f);
+        _hbm.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
 
         _healthReference.IsInvincible = false;
         ChangePhase(1);
     }
+
     private IEnumerator Phase1()
     {
         // Initial settings
@@ -346,6 +349,11 @@ public class AssasinBehavior : MonoBehaviour
             curr._target = target;
         }
         _target = target;
+    }
+
+    public void UpdateHealthbar(float curr, float damage)
+    {
+        _hbm.UpdateHp(_healthReference.GetCurrHealth(), _healthReference.GetMaxHealth());
     }
 
     // Event handlers

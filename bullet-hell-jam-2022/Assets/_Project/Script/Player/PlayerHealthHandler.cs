@@ -63,7 +63,7 @@ public class PlayerHealthHandler : MonoBehaviour
         float startSize = 5;
         _shieldGameObject.transform.localScale = new Vector3(startSize, startSize, 0);
         _shieldGameObject.SetActive(true);
-        float reductionValue = startSize * 1f / 60f * 1f / duration / 10f;
+        float reductionValue = startSize * 1f / 60f * 1f / duration / 5f;
         while(_shieldGameObject.transform.localScale.x > 0)
         {
             _shieldGameObject.transform.localScale -= new Vector3(reductionValue, reductionValue, 0);

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBullets: 1023
+  maxBullets: 60
   drawPriority: -10
   bulletSettings: {fileID: 11400000, guid: 1edc761b951796b4b8b5badc1e5abb09, type: 2}
   spawnSettings: {fileID: 11400000, guid: 8f60856532e001c42b5fa0a1ec2b47d1, type: 2}
@@ -55,19 +55,7 @@ MonoBehaviour:
   playingEditorAnimation: 0
   OnBulletDied:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6496154723158680977, guid: 4aa0603cdc8aeab45b40b8f5d8642a7b, type: 3}
-        m_TargetAssemblyTypeName: BulletFury.Demo.BulletExplodeOnHit, Assembly-CSharp
-        m_MethodName: OnBulletDie
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnBulletCancelled:
     m_PersistentCalls:
       m_Calls: []
@@ -84,7 +72,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2983107962275001192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
@@ -456,7 +444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthComponent: {fileID: 4367939738999187850}
-  _timeToRegenerateShield: 15
   _timeInvincibility: 2
   _shieldGameObject: {fileID: 5673614207031755484}
 --- !u!114 &8342666067461014258

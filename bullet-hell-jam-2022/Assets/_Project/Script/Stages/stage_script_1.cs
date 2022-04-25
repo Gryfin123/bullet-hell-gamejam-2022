@@ -31,6 +31,7 @@ public class stage_script_1 : MonoBehaviour
 
 
     [Header("Player")]
+    [SerializeField] public GameObject _fadoutCanvas;
     [SerializeField] public Transform _playerTransform;
     [SerializeField] public int _startingCheckpoint = 0;
     public Coroutine _gameflow;
@@ -68,18 +69,8 @@ public class stage_script_1 : MonoBehaviour
             bool _movedVertically = false;
             bool _movedHorizontally = false;
             
-                Debug.Log("Doing it " + _didMove 
-                            + " " + _didShoot
-                            + " " + _didSlowdown 
-                            + " " + _didDestroyTarget 
-                            + " " + _didRemeber);
             while (!(_didMove && _didShoot && _didSlowdown && _didDestroyTarget && _didRemeber))
             {
-                Debug.Log("Doing it " + _didMove 
-                            + " " + _didShoot
-                            + " " + _didSlowdown 
-                            + " " + _didDestroyTarget 
-                            + " " + _didRemeber);
                 Vector3 input = (Vector3)_input.GetMovementAxis();
                 if (input.x != 0) _movedHorizontally = true; 
                 if (input.y != 0) _movedVertically = true;
@@ -105,7 +96,7 @@ public class stage_script_1 : MonoBehaviour
 
                 if (_didMove && _didShoot && _didSlowdown && _didDestroyTarget)
                 {
-                    yield return new WaitForSeconds(5f);
+                    yield return new WaitForSeconds(4f);
                     TutCheckRemember();
                 }
 
@@ -115,11 +106,11 @@ public class stage_script_1 : MonoBehaviour
             // set checkpoin
             SetCheckpoint(1);
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
             _tutorialCanvas.SetActive(false);
         }
         
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
 
         // Stage 1
         if (_currCheckpoint == 1)
@@ -214,13 +205,14 @@ public class stage_script_1 : MonoBehaviour
         }
 
         // All done
-        yield return new WaitForSeconds(1f);
+        _fadoutCanvas.SetActive(true);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(2);
         
         // Functions
         void CreateTargetPracticeEnemy(string startPosition, Vector3 targetPosition, float speed)
         {
-            GameObject created = CreateEnemyBasic(_prefabLineShooter, _spawnerSetup.GetPosition(startPosition), 270, 20);
+            GameObject created = CreateEnemyBasic(_prefabLineShooter, _spawnerSetup.GetPosition(startPosition), 270, 9999);
             created.GetComponent<MoveAtTargetPosition>().enabled = true;
             created.GetComponent<MoveAtTargetPosition>()._targetPosition = targetPosition;
             created.GetComponent<MoveAtTargetPosition>()._speed = speed;

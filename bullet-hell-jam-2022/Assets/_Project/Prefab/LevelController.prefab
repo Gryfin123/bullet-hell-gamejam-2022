@@ -545,7 +545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1026638420565184254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -836,6 +836,7 @@ MonoBehaviour:
   _textSlowdown: {fileID: 6353865986077835008}
   _textDestroyTargets: {fileID: 5452129024962887145}
   _textRememberToNotGetKilled: {fileID: 5428890302194440463}
+  _fadoutCanvas: {fileID: 0}
   _playerTransform: {fileID: 0}
   _startingCheckpoint: 0
 --- !u!114 &7282009748100882548
