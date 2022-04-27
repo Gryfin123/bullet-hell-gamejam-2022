@@ -202,12 +202,16 @@ public class stage_script_1 : MonoBehaviour
             {
                 yield return new WaitForEndOfFrame();
             }
+            SetCheckpoint(4);
         }
 
         // All done
-        _fadoutCanvas.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(2);
+        if (_currCheckpoint == 4)
+        {
+            _fadoutCanvas.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene(2);
+        }
         
         // Functions
         void CreateTargetPracticeEnemy(string startPosition, Vector3 targetPosition, float speed)
