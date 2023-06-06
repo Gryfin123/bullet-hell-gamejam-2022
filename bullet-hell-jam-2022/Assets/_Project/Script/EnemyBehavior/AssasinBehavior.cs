@@ -116,9 +116,9 @@ public class AssasinBehavior : MonoBehaviour
 
         while(_phase == 1)
         {
-            _machinegunHardcore._canFire = false;
+            // _machinegunHardcore._canFire = false;
             yield return new WaitForSeconds(3f);
-            _machinegunHardcore._canFire = true;
+            // _machinegunHardcore._canFire = true;
             yield return new WaitForSeconds(0.5f);
         }
     }

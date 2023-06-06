@@ -192,7 +192,7 @@ public class stage_script_1 : MonoBehaviour
             SetCheckpoint(3);
         }
 
-        // Stage 3
+        // Stage 3 (Boss)
         if (_currCheckpoint == 3)
         {
             GameObject boss = CreateEnemyBasic(_prefabBoss, _spawnerSetup.GetPosition("top_1/2"), 0, 9999);
