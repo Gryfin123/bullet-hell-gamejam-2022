@@ -36,7 +36,17 @@ public class EnemyHealthHandler : MonoBehaviour
 
     private void UpdateColor()
     {
-        // ...
+        Color goalColor = new Color (0, 0, 0);
+        Color newColor = new Color(
+            // Mathf.Lerp(_defaultColor.r, goalColor.r, _healthComponent.GetCurrHealth() / _healthComponent.GetMaxHealth()), 
+            // Mathf.Lerp(_defaultColor.g, goalColor.g, _healthComponent.GetCurrHealth() / _healthComponent.GetMaxHealth()), 
+            // Mathf.Lerp(_defaultColor.b, goalColor.r, _healthComponent.GetCurrHealth() / _healthComponent.GetMaxHealth()) 
+            Mathf.Lerp(goalColor.b, _defaultColor.r, _healthComponent.GetCurrHealth() / _healthComponent.GetMaxHealth()), 
+            Mathf.Lerp(goalColor.g, _defaultColor.g, _healthComponent.GetCurrHealth() / _healthComponent.GetMaxHealth()), 
+            Mathf.Lerp(goalColor.b, _defaultColor.b, _healthComponent.GetCurrHealth() / _healthComponent.GetMaxHealth()) 
+        );
+        
+        _spriteRenderer.color = newColor;
     }
 
     private void AllHpLost(float newHp, float damageDealt)
@@ -53,6 +63,7 @@ public class EnemyHealthHandler : MonoBehaviour
     {
         _spriteRenderer.color = new Color(255,255,255);
         yield return new WaitForSeconds(0.1f);
-        _spriteRenderer.color = _defaultColor;
+        //_spriteRenderer.color = _defaultColor;
+        UpdateColor();
     }
 }
