@@ -1391,7 +1391,7 @@ PrefabInstance:
       objectReference: {fileID: 1467490611}
     - target: {fileID: 7282009748100882550, guid: 8850bb64289bd7f4ca619249a71895fe, type: 3}
       propertyPath: _startingCheckpoint
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282009748100882551, guid: 8850bb64289bd7f4ca619249a71895fe, type: 3}
       propertyPath: m_RootOrder
@@ -1510,6 +1510,10 @@ PrefabInstance:
       propertyPath: _levelBoundries
       value: 
       objectReference: {fileID: 655427510}
+    - target: {fileID: 8348095075951470926, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
+      propertyPath: _playerSpeedStandard
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9090693853458944986, guid: 7c4a80df0f403d6478f88cc1a288c65c, type: 3}
       propertyPath: OnBulletDied.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
